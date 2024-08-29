@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://rv3o8jkynwco"]
+
+[ext_resource type="Texture2D" uid="uid://xvoynrnlkmfg" path="res://Enemies/Pug/Assets/pugIngrid.png" id="1_wbcyn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nb0vi"]
+radius = 11.0454
+
+[node name="Pug" type="CharacterBody2D" groups=["Enemies"]]
+
+[node name="Vampurv1Ingrid" type="Sprite2D" parent="."]
+position = Vector2(2, 0)
+texture = ExtResource("1_wbcyn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -1)
+scale = Vector2(0.480001, 0.840001)
+shape = SubResource("CircleShape2D_nb0vi")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, -1)
+scale = Vector2(0.480001, 0.840001)
+shape = SubResource("CircleShape2D_nb0vi")
