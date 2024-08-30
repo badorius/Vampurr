@@ -199,7 +199,7 @@ format = 2
 position = Vector2(-94, 82)
 
 [node name="Pug" parent="." instance=ExtResource("3_15rpc")]
-position = Vector2(50, 88)
+position = Vector2(18, -67)
 
 [node name="ShotBlood" parent="." instance=ExtResource("4_f2ipe")]
 position = Vector2(-41, 83)
