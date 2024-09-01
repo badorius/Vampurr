@@ -157,7 +157,7 @@ states/Start/position = Vector2(53, 363)
 transitions = ["Start", "Iddle", SubResource("AnimationNodeStateMachineTransition_3ylte"), "Iddle", "Run", SubResource("AnimationNodeStateMachineTransition_5xea3"), "Run", "Iddle", SubResource("AnimationNodeStateMachineTransition_ooxgq"), "Run", "End", SubResource("AnimationNodeStateMachineTransition_ydoum"), "Iddle", "Jump", SubResource("AnimationNodeStateMachineTransition_iq1qt"), "Jump", "Iddle", SubResource("AnimationNodeStateMachineTransition_uolpr"), "Iddle", "Shot", SubResource("AnimationNodeStateMachineTransition_riga6"), "Shot", "Iddle", SubResource("AnimationNodeStateMachineTransition_3uwh6")]
 graph_offset = Vector2(-54, 54)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_au11u")
 
 [node name="Vampurv1Ingrid" type="Sprite2D" parent="."]
@@ -182,3 +182,11 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="VampurrJump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_s5s15")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ecbs4")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -7,6 +7,10 @@ const JUMP_VELOCITY = -300.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+#Player vars
+@export var lives = 3
+
+#Var state_machine animation
 var state_machine
 
 #Shot blood scene loaded to instanciate on shot
@@ -96,3 +100,19 @@ func shoting(ShotBlood_direction):
 		A.position.x = global_position.x - 14
 	A.direction = ShotBlood_direction
 	main.add_child(A)
+	
+func die():
+	lives -=1
+	if lives <= 0:
+		gameover()
+		
+func gameover():
+		get_tree().quit()
+		
+		
+		
+#SIGNALS START HERE
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Enemies"):
+		die()
+				
