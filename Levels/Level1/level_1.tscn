@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://cm740huixoh7n"]
+[gd_scene load_steps=12 format=4 uid="uid://cm740huixoh7n"]
 
 [ext_resource type="Texture2D" uid="uid://hffgyf33sk5y" path="res://Levels/Level1/assets/Dungeon Tile Set.png" id="1_clf3y"]
 [ext_resource type="Script" path="res://Levels/Level1/level_1.gd" id="1_xh1k4"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://s2us3nw0ve40" path="res://ShotBlood/shot_blood.tscn" id="4_f2ipe"]
 [ext_resource type="Shader" path="res://Shaders/crt2.gdshader" id="5_7sfc4"]
 [ext_resource type="AudioStream" uid="uid://cdquteil5gnye" path="res://Levels/Level1/assets/Vampurr.mp3" id="7_xewik"]
+[ext_resource type="PackedScene" uid="uid://du5do0d82lytg" path="res://Hud/hud.tscn" id="8_laajo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vu0pw"]
 texture = ExtResource("1_clf3y")
@@ -219,3 +220,5 @@ grow_vertical = 2
 stream = ExtResource("7_xewik")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Hud" parent="." instance=ExtResource("8_laajo")]

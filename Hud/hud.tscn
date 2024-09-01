@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://du5do0d82lytg"]
+
+[ext_resource type="FontFile" uid="uid://dkbcte68j7fre" path="res://Hud/Emulogic-zrEw.ttf" id="1_77418"]
+[ext_resource type="Script" path="res://Hud/hud.gd" id="1_yp4ny"]
+[ext_resource type="Texture2D" uid="uid://o650vesvv4br" path="res://Player/Assets/Vampurr-Sheet.png" id="3_1jdur"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qpokr"]
+font = ExtResource("1_77418")
+font_size = 8
+font_color = Color(1, 0, 0, 1)
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_yp4ny")
+
+[node name="HighScoreLabel" type="Label" parent="."]
+offset_left = 83.0
+offset_top = -1.0
+offset_right = 163.0
+offset_bottom = 22.0
+text = "High Score"
+label_settings = SubResource("LabelSettings_qpokr")
+
+[node name="HighScore" type="Label" parent="."]
+offset_left = 83.0
+offset_top = 7.0
+offset_right = 163.0
+offset_bottom = 30.0
+text = "50000"
+label_settings = SubResource("LabelSettings_qpokr")
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_top = -1.0
+offset_right = 80.0
+offset_bottom = 22.0
+text = "Score"
+label_settings = SubResource("LabelSettings_qpokr")
+
+[node name="Socre" type="Label" parent="."]
+offset_top = 7.0
+offset_right = 80.0
+offset_bottom = 30.0
+text = "0"
+label_settings = SubResource("LabelSettings_qpokr")
+
+[node name="BoxContainerLives" type="BoxContainer" parent="."]
+offset_left = 222.0
+offset_top = -32.0
+offset_right = 262.0
+offset_bottom = 8.0
+
+[node name="IconLive1" type="Sprite2D" parent="BoxContainerLives"]
+position = Vector2(1, 39)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("3_1jdur")
+hframes = 9
+vframes = 9
+
+[node name="IconLive2" type="Sprite2D" parent="BoxContainerLives"]
+position = Vector2(14, 39)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("3_1jdur")
+hframes = 9
+vframes = 9
+
+[node name="IconLive3" type="Sprite2D" parent="BoxContainerLives"]
+position = Vector2(27, 39)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("3_1jdur")
+hframes = 9
+vframes = 9
