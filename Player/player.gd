@@ -17,6 +17,9 @@ var state_machine
 const ShotBlood = preload("../ShotBlood/shot_blood.tscn")
 var ShotBloodDirection = 1
 
+#Load HUD in order to modify lives and scores
+@onready var HUD : CanvasLayer = get_node("../Hud")
+
 #Sounds
 @onready var JumpSound = $VampurrJump
 
@@ -103,6 +106,7 @@ func shoting(ShotBlood_direction):
 	
 func die():
 	lives -=1
+	HUD.dead(lives)
 	if lives <= 0:
 		gameover()
 		

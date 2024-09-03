@@ -7,6 +7,7 @@ extends CanvasLayer
 @onready var player : CharacterBody2D = get_node("../Player")
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -15,3 +16,16 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+func dead(player_lives):
+	lives = player_lives
+	match lives:
+		0:
+			$BoxContainerLives/IconLive3.visible = false
+		1:
+			$BoxContainerLives/IconLive2.visible = false
+		2:
+			$BoxContainerLives/IconLive1.visible = false
+
+	
+	

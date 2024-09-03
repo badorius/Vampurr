@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 
 const SPEED = 30.0
-const JUMP_VELOCITY = -350.0
+const JUMP_VELOCITY = -300.0
 
- 
+var state_machine
 
 #Start random direction 
 @onready var random = RandomNumberGenerator.new()
@@ -12,9 +12,15 @@ const JUMP_VELOCITY = -350.0
 @export var direction = 0
 @export var jump = 0
 @export var rect : Vector2
+@export var is_bubbled : bool = false
+
 
 
 func _ready() -> void:
+	
+	state_machine = $AnimationTree.get('parameters/playback')
+	state_machine.travel('Run')
+	
 	RandomNumberGenerator.new()
 	random_direction()
 	random_jump()
@@ -32,37 +38,44 @@ func random_jump():
 
 
 func _physics_process(delta: float) -> void:
+	flip_direction()
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and not is_bubbled:
 		velocity += get_gravity() * delta
+		state_machine.travel('Jump')
 
-	# If Pug is on bottom, jump! needs to improve.
-	if jump == 1 and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	#if position.y >= 88 and is_on_floor():
-	#	velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	"""
-	if global_position.x >= rect.x - 23:
-		direction = direction * -1
-		print(global_position.x)
-		
-	if global_position.x <= (rect.x - 23) * -1:
-		direction = direction * -1
-		print(global_position.x)
-	"""
-		#Uncoment to stop
-		#velocity.x = move_toward(velocity.x, 0, SPEED)
-		
+
+	# Wehn jump random is 1 pug jump.
+	if jump == 1 and is_on_floor() and not is_bubbled:
+		velocity.y = JUMP_VELOCITY 
+		state_machine.travel('Jump')
+	else:
+		if jump != 1 and  is_on_floor() and not is_bubbled:
+			state_machine.travel('Run')
+
+
 	velocity.x = direction * SPEED
 	
 	#Regenerate random jump
 	jump = random.randi_range(1, 20)
 	move_and_slide()
 	
+func flip_direction():
+	#Flip sprite direction
+	if direction == 1:
+		get_node( "Vampurv1Ingrid" ).set_flip_h( true )
+	if direction == -1:
+		get_node( "Vampurv1Ingrid" ).set_flip_h( false )
+		
+
+func Bubble():
+	is_bubbled = true
+	state_machine.travel('Bubble')
 
 #SIGNALS START HERE
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	direction = direction * -1
+	if body.is_in_group("Weapon"):
+		Bubble()
+	else:
+		direction = direction * -1
