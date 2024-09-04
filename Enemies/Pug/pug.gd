@@ -72,10 +72,21 @@ func flip_direction():
 func Bubble():
 	is_bubbled = true
 	state_machine.travel('Bubble')
+	velocity.y = -1 * SPEED
+	
+func die():
+	#Needs animation die and points for playerzz
+	state_machine.travel('Die')
 
+
+
+	
 #SIGNALS START HERE
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Weapon"):
+	if body.is_in_group("Weapon") and not is_bubbled:
 		Bubble()
 	else:
-		direction = direction * -1
+		if body.is_in_group("Player"):
+			die()
+		else:
+			direction = direction * -1

@@ -117,6 +117,6 @@ func gameover():
 		
 #SIGNALS START HERE
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Enemies"):
+	if body.is_in_group("Enemies") and not body.is_bubbled:
 		die()
 				

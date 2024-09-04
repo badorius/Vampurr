@@ -44,7 +44,7 @@ func explode():
 #SIGNALS START HERE
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemies"):
-		print("Collide")
+		body.is_bubbled = true
 	else:
 		ReadyToExplode += 1
 		if ReadyToExplode >= 2:
