@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ctfs750t8ksp3" path="res://Enemies/Pug/Assets/pug-Sheet.png" id="2_x55q4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22eiy"]
-size = Vector2(24.5833, 20.2381)
+size = Vector2(18.75, 15.5087)
 
 [sub_resource type="Animation" id="Animation_6v1f1"]
 resource_name = "Bubble"
@@ -34,6 +34,25 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 0.411765, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_54f73"]
+resource_name = "Die"
+length = 0.9
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_yred8"]
@@ -134,25 +153,6 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_54f73"]
-resource_name = "Die"
-length = 0.9
-step = 0.1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m6i7e"]
 _data = {
 "Bubble": SubResource("Animation_6v1f1"),
@@ -212,16 +212,16 @@ vframes = 9
 frame = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(2.6, -1.5)
-scale = Vector2(0.480001, 0.840001)
+position = Vector2(2.5, -0.535404)
+scale = Vector2(0.558797, 0.969746)
 shape = SubResource("RectangleShape2D_22eiy")
 
 [node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(1.22867, 1.22867)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2.6, -1.5)
-scale = Vector2(0.480001, 0.840001)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.03472, -0.435758)
+scale = Vector2(0.492316, 0.854374)
 shape = SubResource("RectangleShape2D_22eiy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

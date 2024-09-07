@@ -168,6 +168,7 @@ frame = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
+scale = Vector2(0.84, 0.84)
 shape = SubResource("RectangleShape2D_ecbs4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

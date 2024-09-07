@@ -36,7 +36,7 @@ func _on_SpawnTimer_timeout():
 		spawn_timer.stop()
 
 func schedule_next_spawn():
-	var random_interval = randi_range(1.0, 5.0)  # Schedule next between 1, 3 seconds
+	var random_interval = randi_range(1, 5)  # Schedule next between 1, 3 seconds
 	spawn_timer.wait_time = random_interval
 	spawn_timer.start()
 
