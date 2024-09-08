@@ -6,6 +6,8 @@ extends Node2D
 #Var enemies to instantiate on level:
 @export var num_pug = 5
 @export var pug_scene: PackedScene = preload("res://Enemies/Pug/pug.tscn")
+@export var level_finished : bool = false
+
 
 # Var to get spawn_timer
 @onready var spawn_timer = $Timer
@@ -60,5 +62,8 @@ func get_random_position() -> Vector2:
 	return Vector2(random_x, random_y)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _process(_delta):
+	if level_finished == true:
+		get_tree().quit()
+
+		

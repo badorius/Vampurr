@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=4 uid="uid://cm740huixoh7n"]
 
-[ext_resource type="Texture2D" uid="uid://hffgyf33sk5y" path="res://Levels/Level1/assets/Dungeon Tile Set.png" id="1_clf3y"]
-[ext_resource type="Script" path="res://Levels/Level1/level_1.gd" id="1_xh1k4"]
-[ext_resource type="PackedScene" uid="uid://dcwk72gd4pjwl" path="res://Player/player.tscn" id="2_gosdy"]
-[ext_resource type="Shader" path="res://Shaders/crt2.gdshader" id="5_7sfc4"]
-[ext_resource type="AudioStream" uid="uid://cdquteil5gnye" path="res://Levels/Level1/assets/Vampurr.mp3" id="7_xewik"]
-[ext_resource type="PackedScene" uid="uid://du5do0d82lytg" path="res://Hud/hud.tscn" id="8_laajo"]
+[ext_resource type="Script" path="res://Levels/Level1/level1.gd" id="1_qxnmb"]
+[ext_resource type="Texture2D" uid="uid://hffgyf33sk5y" path="res://Levels/Level1/assets/Dungeon Tile Set.png" id="2_1kh0c"]
+[ext_resource type="PackedScene" uid="uid://dcwk72gd4pjwl" path="res://Player/player.tscn" id="3_bnm47"]
+[ext_resource type="Shader" path="res://Shaders/crt2.gdshader" id="4_jdr2q"]
+[ext_resource type="AudioStream" uid="uid://cdquteil5gnye" path="res://Levels/Level1/assets/Vampurr.mp3" id="5_qviff"]
+[ext_resource type="PackedScene" uid="uid://du5do0d82lytg" path="res://Hud/hud.tscn" id="6_566uk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vu0pw"]
-texture = ExtResource("1_clf3y")
+texture = ExtResource("2_1kh0c")
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:1/0 = 0
@@ -160,7 +160,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_vu0pw")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e1kdk"]
-shader = ExtResource("5_7sfc4")
+shader = ExtResource("4_jdr2q")
 shader_parameter/enable_grain = true
 shader_parameter/enable_curving = true
 shader_parameter/enable_scanlines = true
@@ -180,7 +180,7 @@ shader_parameter/chromatic_aberration_strength = 1.0
 shader_parameter/wiggle = 0.002
 
 [node name="Level1" type="Node2D"]
-script = ExtResource("1_xh1k4")
+script = ExtResource("1_qxnmb")
 
 [node name="Layer0" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -194,7 +194,7 @@ format = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("2_gosdy")]
+[node name="Player" parent="." instance=ExtResource("3_bnm47")]
 position = Vector2(-94, 82)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -209,8 +209,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BGMusicLVL1" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_xewik")
+stream = ExtResource("5_qviff")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="Hud" parent="." instance=ExtResource("8_laajo")]
+[node name="Hud" parent="." instance=ExtResource("6_566uk")]

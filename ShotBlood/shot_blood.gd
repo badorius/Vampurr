@@ -38,8 +38,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func explode():
-	state_machine.travel('Explode')
-
+	#state_machine.travel('Explode')
+	pass
 	
 #SIGNALS START HERE
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -47,6 +47,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.is_bubbled = true
 	else:
 		ReadyToExplode += 1
-		if ReadyToExplode >= 2:
+		if ReadyToExplode >= 3:
 			explode()
 			

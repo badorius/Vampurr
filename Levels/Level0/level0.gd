@@ -18,8 +18,7 @@ func _ready() -> void:
 	$LabelRndChars.text=get_rnd_chars(characters, 20)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	print(stage)
+func _process(_delta: float) -> void:
 	match stage:
 		1:
 			print_rnd_chars()
@@ -31,17 +30,17 @@ func _process(delta: float) -> void:
 	
 func print_rnd_chars():
 	$LabelRndChars.visible = true
-	if $LabelRndChars.text.length() < 400:
-		$LabelRndChars.text+=get_rnd_chars(characters, 20)
+	if $LabelRndChars.text.length() < 324:
+		$LabelRndChars.text+=get_rnd_chars(characters, 18)
 
 	else:
 		var random_colour = Color(randf(), randf(), randf())
 		$LabelRndChars.label_settings.font_color = random_colour
-		$LabelRndChars.text=get_rnd_chars(characters, 20)
+		$LabelRndChars.text=get_rnd_chars(characters, 18)
 
 	
 func get_rnd_chars(chars, length):
-	var word: String
+	var word: String = ""
 	var n_char = len(chars)
 	for i in range(length):
 		word += chars[randi()% n_char]
@@ -76,8 +75,13 @@ func showgrid():
 	$LabelRomCheck.visible = false
 	$TileMapLayer.visible = true
 	
-func quitboot():
-	get_tree().quit()
+func endlevel():
+	var FILE_BEGIN = "res://Levels/Level"
+	var current_scene_file = get_tree().current_scene.scene_file_path
+	var next_level_number = current_scene_file.to_int() + 1
+	var next_level_path = FILE_BEGIN + str(next_level_number) + "/level"+ str(next_level_number) + ".tscn"
+	get_tree().change_scene_to_file(next_level_path)
+	#get_tree().quit()
 
 	
 
@@ -85,5 +89,5 @@ func _on_time_rnd_chars_timeout() -> void:
 	if stage < 3:
 		stage += 1
 	else:
-		quitboot()
+		endlevel()
 	 
