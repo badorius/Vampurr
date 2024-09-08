@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://48esdl66gilo"]
+
+[ext_resource type="Script" path="res://Levels/Boot/boot.gd" id="1_u5k0c"]
+[ext_resource type="FontFile" uid="uid://dkbcte68j7fre" path="res://Hud/Emulogic-zrEw.ttf" id="2_nrlyk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7auxd"]
+font = ExtResource("2_nrlyk")
+
+[node name="Boot" type="Node2D"]
+script = ExtResource("1_u5k0c")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "a"
+label_settings = SubResource("LabelSettings_7auxd")
