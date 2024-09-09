@@ -13,7 +13,7 @@ config_version=5
 config/name="Vampurr"
 run/main_scene="res://Levels/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-boot_splash/image="res://Levels/Splash/assets/_69fc8296-64e5-4512-a3cc-7323fd9b139a.png"
+boot_splash/image="res://Levels/Level0/Assets/_69fc8296-64e5-4512-a3cc-7323fd9b139a.png"
 config/icon="res://icon.svg"
 
 [display]
@@ -36,6 +36,16 @@ Player=""
 ui_shot={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":90,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+insertcoin={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":53,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+push1player={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":49,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 

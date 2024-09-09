@@ -1,42 +1,51 @@
 extends Node2D
 
 var characters = 'abcdefghijklmnopqrstuvwxyz'
-@onready var timer = $Timer
 @export var stage : int
-
+@onready var timer = $Timer
+var state_machine
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	state_machine = $AnimationTree.get('parameters/playback')
 	#Set all labels as no visible, will be visible on each stage
-	$LabelRndChars.visible = false
-	$LabelRomCheck.visible = false
-	$TileMapLayer.visible = false
-	
+	disable_visible()
 	randomize()
 	timer.start()
 	stage = 1
-	$LabelRndChars.text=get_rnd_chars(characters, 20)
+	$LabelRndChars.text=get_rnd_chars(characters, 40)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	print(stage)
 	match stage:
 		1:
 			print_rnd_chars()
 		2:
-			RomCheck()
+			RomCheck1()
 		3:
+			RomCheck2()
+		4:
+			RomCheck3()
+		5:
+			RomCheck4()
+		6:
 			showgrid()
+		7:
+			showsplash()
+
 
 	
 func print_rnd_chars():
 	$LabelRndChars.visible = true
-	if $LabelRndChars.text.length() < 324:
-		$LabelRndChars.text+=get_rnd_chars(characters, 18)
+	if $LabelRndChars.text.length() < 800:
+		$LabelRndChars.text+=get_rnd_chars(characters, 40)
 
 	else:
 		var random_colour = Color(randf(), randf(), randf())
 		$LabelRndChars.label_settings.font_color = random_colour
-		$LabelRndChars.text=get_rnd_chars(characters, 18)
+		$LabelRndChars.text=get_rnd_chars(characters, 40)
+		$LabelRndChars.visible = false
 
 	
 func get_rnd_chars(chars, length):
@@ -46,24 +55,24 @@ func get_rnd_chars(chars, length):
 		word += chars[randi()% n_char]
 	return word + "\n"
 
-func RomCheck():
+func RomCheck1():
 	$LabelRndChars.visible = false
 	$LabelRomCheck.visible = true
-	
 	$LabelRomCheck.label_settings.font_color = change_color()
 	$LabelRomCheck.text = "RAM CHECK...\n"
-	await get_tree().create_timer(0.5).timeout
-	$LabelRomCheck.label_settings.font_color = change_color()
-	$LabelRomCheck.text += "RAM OK\n"
-	await get_tree().create_timer(0.5).timeout
-	$LabelRomCheck.label_settings.font_color = change_color()
-	$LabelRomCheck.text += "ROM CHECK...\n"
-	await get_tree().create_timer(0.5).timeout
-	$LabelRomCheck.label_settings.font_color = change_color()
-	$LabelRomCheck.text += "ROM OK\n"
-	await get_tree().create_timer(0.5).timeout
-	stage +=1
 
+	
+func RomCheck2():
+	$LabelRomCheck.label_settings.font_color = change_color()
+	$LabelRomCheck.text = "RAM CHECK...\n" + "RAM OK\n"
+
+	
+func RomCheck3():
+	$LabelRomCheck.label_settings.font_color = change_color()
+	$LabelRomCheck.text = "RAM CHECK...\n" + "RAM OK\n" + "ROM CHECK...\n"
+
+func RomCheck4():
+	$LabelRomCheck.text = "RAM CHECK...\n" + "RAM OK\n" + "ROM CHECK...\n" + "ROM OK\n"
 
 func change_color():
 	var random_colour = Color(randf(), randf(), randf())
@@ -71,9 +80,23 @@ func change_color():
 
 
 func showgrid():
+	disable_visible()
+	$TileMapLayer.visible = true
+	
+	
+func showsplash():
+	disable_visible()
+	$Splash.visible = true
+	state_machine.travel('splash')
+	$Hud.visible = true
+	
+func disable_visible():
 	$LabelRndChars.visible = false
 	$LabelRomCheck.visible = false
-	$TileMapLayer.visible = true
+	$TileMapLayer.visible = false
+	$Splash.visible = false
+	$Hud.visible = false
+	$Player.visible = false
 	
 func endlevel():
 	var FILE_BEGIN = "res://Levels/Level"
@@ -83,11 +106,11 @@ func endlevel():
 	get_tree().change_scene_to_file(next_level_path)
 	#get_tree().quit()
 
-	
 
-func _on_time_rnd_chars_timeout() -> void:
-	if stage < 3:
+
+
+func _on_timer_timeout() -> void:
+	if stage < 8:
 		stage += 1
 	else:
 		endlevel()
-	 

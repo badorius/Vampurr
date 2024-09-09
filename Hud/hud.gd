@@ -5,6 +5,7 @@ extends CanvasLayer
 @export var high_score : int = 10000
 @export var timer : float = 300.0
 @onready var player : CharacterBody2D = get_node("../Player")
+@export var credits : int = 0
 
 
 
@@ -26,6 +27,17 @@ func dead(player_lives):
 			$BoxContainerLives/IconLive2.visible = false
 		2:
 			$BoxContainerLives/IconLive1.visible = false
+			
+
+func add_credits():
+	#PENDING Splash coing screen
+	credits += 1
+	$Credits.text = "Credit " + str(credits)
+	
+func del_credits():
+	#PENDING Splash coing screen
+	credits -= 1
+	$Credits.text = "Credit " + str(credits)
 
 	
 	

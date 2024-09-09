@@ -42,6 +42,14 @@ offset_bottom = 30.0
 text = "0"
 label_settings = SubResource("LabelSettings_qpokr")
 
+[node name="Credits" type="Label" parent="."]
+offset_left = 184.0
+offset_top = 208.0
+offset_right = 264.0
+offset_bottom = 231.0
+text = "Credit 0"
+label_settings = SubResource("LabelSettings_qpokr")
+
 [node name="BoxContainerLives" type="BoxContainer" parent="."]
 offset_left = 222.0
 offset_top = -32.0

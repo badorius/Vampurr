@@ -1,0 +1,216 @@
+[gd_scene load_steps=10 format=4 uid="uid://cm740huixoh7n"]
+
+[ext_resource type="Script" path="res://Levels/Level2/level2.gd" id="1_hbiuq"]
+[ext_resource type="Texture2D" uid="uid://hffgyf33sk5y" path="res://Levels/Level2/assets/Dungeon Tile Set.png" id="2_7tmrn"]
+[ext_resource type="PackedScene" uid="uid://dcwk72gd4pjwl" path="res://Player/player.tscn" id="3_viem6"]
+[ext_resource type="Shader" path="res://Shaders/crt2.gdshader" id="4_evhgb"]
+[ext_resource type="AudioStream" uid="uid://cdquteil5gnye" path="res://Levels/Level2/assets/Vampurr.mp3" id="5_2lakx"]
+[ext_resource type="PackedScene" uid="uid://du5do0d82lytg" path="res://Hud/hud.tscn" id="6_glo4c"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vu0pw"]
+texture = ExtResource("2_7tmrn")
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+6:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:2/0 = 0
+6:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -6.875, -8, -7)
+1:3/0/physics_layer_0/polygon_0/one_way = true
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -6.875, -8, -7)
+2:3/0/physics_layer_0/polygon_0/one_way = true
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -6.875, -8, -7)
+3:3/0/physics_layer_0/polygon_0/one_way = true
+5:3/0 = 0
+6:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+5:8/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+5:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+5:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+10:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+5:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+12:12/0 = 0
+2:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+12:14/0 = 0
+13:14/0 = 0
+7:15/0 = 0
+8:15/0 = 0
+9:15/0 = 0
+10:15/0 = 0
+11:15/0 = 0
+12:15/0 = 0
+4:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8udtl"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_vu0pw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e1kdk"]
+shader = ExtResource("4_evhgb")
+shader_parameter/enable_grain = true
+shader_parameter/enable_curving = true
+shader_parameter/enable_scanlines = true
+shader_parameter/enable_chromatic_aberration = false
+shader_parameter/enable_rgb_grid = false
+shader_parameter/enable_vhs_wiggle = true
+shader_parameter/enable_vignette = false
+shader_parameter/brightness_multiplier = 1.75
+shader_parameter/grain_strength = 0.25
+shader_parameter/curve_power = 1.02
+shader_parameter/vignette_size = 0.4
+shader_parameter/vignette_smoothness = 0.4
+shader_parameter/scanlines_interval = 2.0
+shader_parameter/scanline_opacity = 1.0
+shader_parameter/scanline_thickness = 1.0
+shader_parameter/chromatic_aberration_strength = 1.0
+shader_parameter/wiggle = 0.002
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_hbiuq")
+
+[node name="Layer0" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_map_data = PackedByteArray("AADw//b/AAABAAEAAADx//b/AAACAAEAAADy//b/AAACAAEAAADz//b/AAACAAEAAAD0//b/AAACAAEAAAD1//b/AAACAAEAAAD2//b/AAACAAEAAAD3//b/AAACAAEAAAD4//b/AAACAAEAAAD5//b/AAACAAEAAAD6//b/AAACAAEAAAD7//b/AAACAAEAAAD8//b/AAACAAEAAAD9//b/AAACAAEAAAD+//b/AAACAAEAAAD///b/AAACAAEAAAAAAPb/AAACAAEAAAABAPb/AAACAAEAAAADAPb/AAACAAEAAAAEAPb/AAACAAEAAAAGAPb/AAACAAEAAAAHAPb/AAACAAEAAAAIAPb/AAACAAEAAAAJAPb/AAACAAEAAAAKAPb/AAACAAEAAAALAPb/AAACAAEAAAAMAPb/AAACAAEAAAANAPb/AAACAAEAAAAOAPb/AAACAAEAAAAPAPb/AAADAAEAAADw//f/AAABAAIAAADw//j/AAABAAIAAADw//n/AAABAAIAAADw//r/AAABAAIAAADw//v/AAABAAIAAADw//z/AAABAAIAAADw//3/AAABAAIAAADw//7/AAABAAIAAADw////AAABAAIAAADw/wAAAAABAAIAAADw/wEAAAABAAIAAADw/wIAAAABAAIAAADw/wMAAAABAAIAAADw/wQAAAABAAIAAADw/wUAAAABAAIAAADw/wYAAAABAAIAAADw/wcAAAABAAIAAADw/wgAAAABAAIAAADw/wkAAAABAAIAAADw/woAAAABAAIAAADw/wsAAAABAAIAAADw/wwAAAABAAIAAADw/w0AAAABAAMAAADx/w0AAAACAAMAAADy/w0AAAACAAMAAADz/w0AAAACAAMAAAD0/w0AAAACAAMAAAD1/w0AAAACAAMAAAD2/w0AAAACAAMAAAD3/w0AAAACAAMAAAD4/w0AAAACAAMAAAD5/w0AAAACAAMAAAD6/w0AAAACAAMAAAD7/w0AAAACAAMAAAD8/w0AAAACAAMAAAD9/w0AAAACAAMAAAD+/w0AAAACAAMAAAD//w0AAAACAAMAAAAAAA0AAAACAAMAAAABAA0AAAACAAMAAAACAA0AAAACAAMAAAADAA0AAAACAAMAAAAEAA0AAAACAAMAAAAFAA0AAAACAAMAAAAGAA0AAAACAAMAAAAHAA0AAAACAAMAAAAIAA0AAAACAAMAAAAJAA0AAAACAAMAAAAKAA0AAAACAAMAAAALAA0AAAACAAMAAAAPAA0AAAADAAMAAAAMAA0AAAACAAMAAAANAA0AAAACAAMAAAAOAA0AAAACAAMAAAAPAPf/AAADAAIAAAAPAPj/AAADAAIAAAAPAP3/AAADAAIAAAAPAP7/AAADAAIAAAAPAP//AAADAAIAAAAPAAAAAAADAAIAAAAPAAEAAAADAAIAAAAPAAIAAAADAAIAAAAPAAMAAAADAAIAAAAPAAQAAAADAAIAAAAPAAUAAAADAAIAAAAPAAYAAAADAAIAAAAPAAcAAAADAAIAAAAPAAgAAAADAAIAAAAPAAkAAAADAAIAAAAPAAoAAAADAAIAAAAPAAsAAAADAAIAAAAPAAwAAAADAAIAAAAPAPn/AAADAAIAAAAPAPr/AAADAAIAAAAPAPz/AAADAAIAAAAPAPv/AAADAAIAAAACAPb/AAACAAEAAAAFAPb/AAACAAEAAADx/woAAAABAAMAAADy/woAAAACAAMAAADx/wYAAAABAAMAAADy/wYAAAACAAMAAADx/wIAAAABAAMAAADy/wIAAAACAAMAAADx//7/AAABAAMAAADy//7/AAACAAMAAADx//r/AAABAAMAAADy//r/AAACAAMAAAAMAPr/AAABAAMAAAANAPr/AAACAAMAAAAOAPr/AAADAAMAAADz//r/AAADAAMAAADz//7/AAADAAMAAADz/wIAAAADAAMAAADz/wYAAAADAAMAAADz/woAAAADAAMAAAAMAP7/AAABAAMAAAANAP7/AAACAAMAAAAOAP7/AAADAAMAAAAMAAIAAAABAAMAAAANAAIAAAACAAMAAAAOAAIAAAADAAMAAAAMAAYAAAABAAMAAAANAAYAAAACAAMAAAAOAAYAAAADAAMAAAAMAAoAAAABAAMAAAANAAoAAAACAAMAAAAOAAoAAAADAAMAAAD4/wYAAAABAAMAAAD5/wYAAAACAAMAAAD6/wYAAAACAAMAAAD7/wYAAAACAAMAAAD8/wYAAAACAAMAAAD9/wYAAAACAAMAAAD+/wYAAAACAAMAAAD//wYAAAACAAMAAAAAAAYAAAACAAMAAAABAAYAAAACAAMAAAACAAYAAAACAAMAAAADAAYAAAACAAMAAAAEAAYAAAACAAMAAAAFAAYAAAACAAMAAAAGAAYAAAACAAMAAAAHAAYAAAADAAMAAAD4//r/AAABAAEAAAD4//v/AAABAAIAAAD4//z/AAABAAIAAAD4//3/AAABAAIAAAD4//7/AAABAAIAAAD4////AAABAAIAAAD4/wAAAAABAAIAAAD4/wEAAAABAAIAAAD4/wIAAAABAAIAAAD4/wMAAAABAAIAAAD4/wQAAAABAAIAAAD4/wUAAAABAAIAAAAHAPr/AAADAAEAAAAHAPv/AAADAAIAAAAHAPz/AAADAAIAAAAHAP3/AAADAAIAAAAHAP7/AAADAAIAAAAHAP//AAADAAIAAAAHAAAAAAADAAIAAAAHAAEAAAADAAIAAAAHAAIAAAADAAIAAAAHAAMAAAADAAIAAAAHAAQAAAADAAIAAAAHAAUAAAADAAIAAAD5/wMAAAABAAMAAAD6/wMAAAACAAMAAAD7/wMAAAADAAMAAAD5/wAAAAABAAMAAAD6/wAAAAACAAMAAAD7/wAAAAADAAMAAAD5//3/AAABAAMAAAD6//3/AAACAAMAAAD7//3/AAADAAMAAAAEAP3/AAABAAMAAAAFAP3/AAACAAMAAAAGAP3/AAADAAMAAAAEAAAAAAABAAMAAAAFAAAAAAACAAMAAAAGAAAAAAADAAMAAAAEAAMAAAABAAMAAAAFAAMAAAACAAMAAAAGAAMAAAADAAMAAAD+//3/AAABAAMAAAD///3/AAACAAMAAAAAAP3/AAACAAMAAAD+/wAAAAABAAMAAAD//wAAAAACAAMAAAAAAAAAAAACAAMAAAD+/wMAAAABAAMAAAD//wMAAAACAAMAAAAAAAMAAAACAAMAAAABAP3/AAADAAMAAAABAAAAAAADAAMAAAABAAMAAAADAAMAAAD5//r/AAACAAEAAAD6//r/AAACAAEAAAD7//r/AAACAAEAAAD8//r/AAACAAEAAAD9//r/AAACAAEAAAD+//r/AAACAAEAAAD///r/AAACAAEAAAAAAPr/AAACAAEAAAABAPr/AAACAAEAAAACAPr/AAACAAEAAAADAPr/AAACAAEAAAAEAPr/AAACAAEAAAAFAPr/AAACAAEAAAAGAPr/AAACAAEAAAA=")
+tile_set = SubResource("TileSet_8udtl")
+
+[node name="TileMap" type="TileMap" parent="."]
+visible = false
+tile_set = SubResource("TileSet_8udtl")
+format = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("3_viem6")]
+position = Vector2(-94, 82)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_e1kdk")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BGMusicLVL1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_2lakx")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Hud" parent="." instance=ExtResource("6_glo4c")]
