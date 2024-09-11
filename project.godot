@@ -14,7 +14,11 @@ config/name="Vampurr"
 run/main_scene="res://Levels/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/image="res://Levels/Level0/Assets/_69fc8296-64e5-4512-a3cc-7323fd9b139a.png"
-config/icon="res://icon.svg"
+config/icon="res://Levels/Level0/Assets/_69fc8296-64e5-4512-a3cc-7323fd9b139a.png"
+
+[autoload]
+
+GameManager="*res://Levels/GameManager.gd"
 
 [display]
 

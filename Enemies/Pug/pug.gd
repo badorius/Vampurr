@@ -3,8 +3,10 @@ extends CharacterBody2D
 
 const SPEED = 30.0
 const JUMP_VELOCITY = -300.0
+const POINTS : int = 100
 
 var state_machine
+@onready var hud : CanvasLayer = get_node("../Hud")
 
 #Start random direction 
 @onready var random = RandomNumberGenerator.new()
@@ -75,8 +77,12 @@ func Bubble():
 	velocity.y = -1 * SPEED
 	
 func die():
+	GameManager.score += POINTS
+	hud.update_hud()
 	#Needs animation die and points for playerzz
 	state_machine.travel('Die')
+	#Pending animatino die pug and drop item
+	queue_free()
 
 
 

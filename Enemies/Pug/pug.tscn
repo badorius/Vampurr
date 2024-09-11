@@ -47,7 +47,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.9),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -185,6 +185,7 @@ animation = &"Run"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bllf0"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dbaa6"]
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ge6iv"]
 states/Bubble/node = SubResource("AnimationNodeAnimation_mg1xy")
@@ -198,6 +199,7 @@ states/Run/node = SubResource("AnimationNodeAnimation_3otr5")
 states/Run/position = Vector2(446, 77)
 states/Start/position = Vector2(191, 77)
 transitions = ["Start", "Run", SubResource("AnimationNodeStateMachineTransition_qesr1"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_jwu4s"), "Run", "Bubble", SubResource("AnimationNodeStateMachineTransition_oauoa"), "Jump", "Bubble", SubResource("AnimationNodeStateMachineTransition_ks1sg"), "Bubble", "Die", SubResource("AnimationNodeStateMachineTransition_bllf0"), "Die", "End", SubResource("AnimationNodeStateMachineTransition_dbaa6")]
+graph_offset = Vector2(38, 112)
 
 [node name="Pug" type="CharacterBody2D" groups=["Enemies"]]
 position = Vector2(0, 10)

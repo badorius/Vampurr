@@ -37,9 +37,9 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
-func explode():
-	#state_machine.travel('Explode')
-	pass
+func explode():	
+	state_machine.travel('Explode')
+	
 	
 #SIGNALS START HERE
 func _on_area_2d_body_entered(body: Node2D) -> void:

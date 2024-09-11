@@ -7,9 +7,6 @@ const JUMP_VELOCITY = -300.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-#Player vars
-@export var lives = 3
-
 #Var state_machine animation
 var state_machine
 
@@ -105,9 +102,9 @@ func shoting(ShotBlood_direction):
 	main.add_child(A)
 	
 func die():
-	lives -=1
-	HUD.dead(lives)
-	if lives <= 0:
+	GameManager.lives -= 1
+	HUD.update_hud()
+	if GameManager.lives <= 0:
 		gameover()
 		
 func gameover():

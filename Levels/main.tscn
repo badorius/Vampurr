@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjemxf2w1t78y"]
+[gd_scene load_steps=4 format=3 uid="uid://bjemxf2w1t78y"]
 
 [ext_resource type="Script" path="res://Levels/main.gd" id="1_hghja"]
+[ext_resource type="PackedScene" uid="uid://du5do0d82lytg" path="res://Hud/hud.tscn" id="2_ql8n8"]
+[ext_resource type="PackedScene" uid="uid://dcwk72gd4pjwl" path="res://Player/player.tscn" id="3_8cieh"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_hghja")
+
+[node name="Hud" parent="." instance=ExtResource("2_ql8n8")]
+visible = false
+
+[node name="Player" parent="." instance=ExtResource("3_8cieh")]
+visible = false
+position = Vector2(23, 187)

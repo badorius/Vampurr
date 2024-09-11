@@ -69,9 +69,11 @@ func get_random_position() -> Vector2:
 func _process(_delta):
 	
 	if Input.is_action_just_pressed("insertcoin"):
-		hud.add_credits()
+		GameManager.credits += 1
+		hud.update_hud()
 	if Input.is_action_just_pressed("push1player"):
-		hud.del_credits()
+		GameManager.credits -= 1
+		hud.update_hud()
 		endlevel()
 		
 	match stage:

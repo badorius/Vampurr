@@ -53,7 +53,7 @@ func spawn_pug():
 func get_random_position() -> Vector2:
 	#Randomize x position from rect value
 	var random_x = randf_range(rect.x * -1, rect.x)
-	#Uncoment this line if you want to randomize y
+	#Uncoment tzzis line if you want to randomize y
 	#var random_y = randf_range(rect.y * -1, rect.y)
 	#Fix y position:
 	var random_y = -70
