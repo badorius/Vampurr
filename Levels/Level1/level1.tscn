@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://ch8cgpc2w6sff"]
+[gd_scene load_steps=13 format=4 uid="uid://ch8cgpc2w6sff"]
 
 [ext_resource type="Script" path="res://Levels/Level1/level1.gd" id="1_qxnmb"]
 [ext_resource type="Texture2D" uid="uid://hffgyf33sk5y" path="res://Levels/Level2/assets/Dungeon Tile Set.png" id="2_il1t8"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://du5do0d82lytg" path="res://Hud/hud.tscn" id="6_566uk"]
 [ext_resource type="PackedScene" uid="uid://c8p4tnrvrnj3y" path="res://PlayerDemo/playerdemo.tscn" id="7_dd267"]
 [ext_resource type="FontFile" uid="uid://dkbcte68j7fre" path="res://Hud/Emulogic-zrEw.ttf" id="7_jf7ne"]
+[ext_resource type="AudioStream" uid="uid://cqootu45n8hfg" path="res://Levels/Level1/assets/coin-sound.mp3" id="8_lomst"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vu0pw"]
 texture = ExtResource("2_il1t8")
@@ -254,5 +255,8 @@ position = Vector2(-90, 85)
 
 [node name="Player" parent="." instance=ExtResource("3_bnm47")]
 visible = false
+
+[node name="InsertCoin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_lomst")
 
 [connection signal="timeout" from="TimerDemo" to="." method="_on_timer_demo_timeout"]

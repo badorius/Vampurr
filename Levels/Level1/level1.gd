@@ -10,7 +10,8 @@ extends Node2D
 @export var stage : int = 1
 @onready var player : CharacterBody2D = get_node("PlayerDemo/")
 @onready var hud : CanvasLayer = get_node("Hud/")
-
+#Sounds
+@onready var insertcoin = $InsertCoin
 
 
 # Var to get spawn_timer
@@ -69,6 +70,7 @@ func get_random_position() -> Vector2:
 func _process(_delta):
 	
 	if Input.is_action_just_pressed("insertcoin"):
+		insertcoin.play()
 		GameManager.credits += 1
 		hud.update_hud()
 	if Input.is_action_just_pressed("push1player"):

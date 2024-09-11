@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://s2us3nw0ve40"]
+[gd_scene load_steps=17 format=3 uid="uid://s2us3nw0ve40"]
 
 [ext_resource type="Script" path="res://ShotBlood/shot_blood.gd" id="1_8o2ca"]
 [ext_resource type="Texture2D" uid="uid://cqhg65woh8n83" path="res://ShotBlood/Assets/ShotBlood-Sheet.png" id="1_ikw4c"]
+[ext_resource type="AudioStream" uid="uid://djk6ke8mms82o" path="res://ShotBlood/Assets/BubbleExplode.mp3" id="3_dmp3s"]
 [ext_resource type="AudioStream" uid="uid://bl8t52gq1evlc" path="res://ShotBlood/Assets/bubble-pop.mp3" id="3_m0flp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2g68p"]
@@ -50,7 +51,7 @@ tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": null
+"stream": ExtResource("3_dmp3s")
 }],
 "times": PackedFloat32Array(0)
 }
