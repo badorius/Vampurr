@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://rv3o8jkynwco"]
+[gd_scene load_steps=22 format=3 uid="uid://rv3o8jkynwco"]
 
 [ext_resource type="Script" path="res://Enemies/Pug/pug.gd" id="1_p60lt"]
 [ext_resource type="Texture2D" uid="uid://ctfs750t8ksp3" path="res://Enemies/Pug/Assets/pug-Sheet.png" id="2_x55q4"]
+[ext_resource type="AudioStream" uid="uid://5ndysqwdnm1w" path="res://ShotBlood/Assets/pop_enemy.mp3" id="3_8rh2k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22eiy"]
 size = Vector2(18.75, 15.5087)
@@ -38,7 +39,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_54f73"]
 resource_name = "Die"
-length = 0.9
+length = 1.5
 step = 0.1
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -47,12 +48,66 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.9),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"debuganimation"
+}, {
 "args": [],
 "method": &"queue_free"
 }]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PopDie")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_8rh2k")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Vampurv1Ingrid:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [19, 27, 28, 29, 30, 31, 32, 33, 34, 35]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Vampurv1Ingrid:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.411765, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Vampurv1Ingrid:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_yred8"]
@@ -121,6 +176,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 0.411765, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Vampurv1Ingrid:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_b3dhw"]
@@ -199,7 +266,7 @@ states/Run/node = SubResource("AnimationNodeAnimation_3otr5")
 states/Run/position = Vector2(446, 77)
 states/Start/position = Vector2(191, 77)
 transitions = ["Start", "Run", SubResource("AnimationNodeStateMachineTransition_qesr1"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_jwu4s"), "Run", "Bubble", SubResource("AnimationNodeStateMachineTransition_oauoa"), "Jump", "Bubble", SubResource("AnimationNodeStateMachineTransition_ks1sg"), "Bubble", "Die", SubResource("AnimationNodeStateMachineTransition_bllf0"), "Die", "End", SubResource("AnimationNodeStateMachineTransition_dbaa6")]
-graph_offset = Vector2(38, 112)
+graph_offset = Vector2(34, 32)
 
 [node name="Pug" type="CharacterBody2D" groups=["Enemies"]]
 position = Vector2(0, 10)
@@ -235,5 +302,7 @@ libraries = {
 deterministic = false
 tree_root = SubResource("AnimationNodeStateMachine_ge6iv")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="PopDie" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

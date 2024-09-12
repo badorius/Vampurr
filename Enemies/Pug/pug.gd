@@ -5,8 +5,13 @@ const SPEED = 30.0
 const JUMP_VELOCITY = -300.0
 const POINTS : int = 100
 
+const PointsIndicator = preload("res://Hud/points_indicator.tscn")
+
 var state_machine
 @onready var hud : CanvasLayer = get_node("../Hud")
+
+#Sounds
+@onready var popdie = $PopDie
 
 #Start random direction 
 @onready var random = RandomNumberGenerator.new()
@@ -15,6 +20,8 @@ var state_machine
 @export var jump = 0
 @export var rect : Vector2
 @export var is_bubbled : bool = false
+@export var is_dead : bool = false
+
 
 
 
@@ -40,22 +47,23 @@ func random_jump():
 
 
 func _physics_process(delta: float) -> void:
-	flip_direction()
-	# Add the gravity.
-	if not is_on_floor() and not is_bubbled:
-		velocity += get_gravity() * delta
-		state_machine.travel('Jump')
+	
+	if not is_dead:
+		flip_direction()
+		if not is_on_floor() and not is_bubbled:
+			velocity += get_gravity() * delta
+			state_machine.travel('Jump')
 
-	# Wehn jump random is 1 pug jump.
-	if jump == 1 and is_on_floor() and not is_bubbled:
-		velocity.y = JUMP_VELOCITY 
-		state_machine.travel('Jump')
-	else:
-		if jump != 1 and  is_on_floor() and not is_bubbled:
-			state_machine.travel('Run')
+		# Wehn jump random is 1 pug jump.
+		if jump == 1 and is_on_floor() and not is_bubbled:
+			velocity.y = JUMP_VELOCITY 
+			state_machine.travel('Jump')
+		else:
+			if jump != 1 and  is_on_floor() and not is_bubbled:
+				state_machine.travel('Run')
 
-	if is_bubbled:
-		Bubble()
+		if is_bubbled:
+			Bubble()
 
 	velocity.x = direction * SPEED
 	
@@ -76,22 +84,46 @@ func Bubble():
 	state_machine.travel('Bubble')
 	velocity.y = -1 * SPEED
 	
+func debuganimation():
+	print("Animation Entered")
+	
+	
 func die():
+	is_bubbled = false
+	is_dead = true
+	state_machine.travel('Die')
+	direction = 0
+	velocity.x = move_toward(velocity.x, 0, SPEED)
+	velocity.y = 1 * SPEED
+	
+	#FIX Random size
+	var offset_position = randi() % 20
+	var main = get_tree().current_scene
+	var D = PointsIndicator.instantiate()
+	var color = "white"
+	D.global_position = Vector2(global_position.x - offset_position, (global_position.y) - offset_position)
+	D.show_points(POINTS, color)
+	main.add_child(D)
+
+	#drop_item()
+
+	
 	GameManager.score += POINTS
 	hud.update_hud()
 	#Needs animation die and points for playerzz
 	state_machine.travel('Die')
 	#Pending animatino die pug and drop item
-	queue_free()
+	#queue_free()
 
 
 
 	
 #SIGNALS START HERE #PENDING FIX 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Weapon") and not is_bubbled:
-		Bubble()
-	if body.is_in_group("Player") and is_bubbled:
-		die()
-	else:
-		direction = direction * -1
+	if not is_dead:
+		if body.is_in_group("Weapon") and not is_bubbled:
+			Bubble()
+		if body.is_in_group("Player") and is_bubbled:
+			die()
+		else:
+			direction = direction * -1
