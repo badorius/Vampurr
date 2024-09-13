@@ -34,6 +34,7 @@ window/handheld/orientation=1
 Enemies=""
 Weapon=""
 Player=""
+Items=""
 
 [input]
 

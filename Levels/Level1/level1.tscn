@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://ch8cgpc2w6sff"]
+[gd_scene load_steps=24 format=4 uid="uid://ch8cgpc2w6sff"]
 
 [ext_resource type="Script" path="res://Levels/Level1/level1.gd" id="1_qxnmb"]
 [ext_resource type="Texture2D" uid="uid://hffgyf33sk5y" path="res://Levels/Level2/assets/Dungeon Tile Set.png" id="2_il1t8"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://du5do0d82lytg" path="res://Hud/hud.tscn" id="6_566uk"]
 [ext_resource type="PackedScene" uid="uid://c8p4tnrvrnj3y" path="res://PlayerDemo/playerdemo.tscn" id="7_dd267"]
 [ext_resource type="FontFile" uid="uid://dkbcte68j7fre" path="res://Hud/Emulogic-zrEw.ttf" id="7_jf7ne"]
+[ext_resource type="PackedScene" uid="uid://rv3o8jkynwco" path="res://Enemies/Pug/pug.tscn" id="7_juqwh"]
 [ext_resource type="AudioStream" uid="uid://cqootu45n8hfg" path="res://Levels/Level1/assets/coin-sound.mp3" id="8_lomst"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vu0pw"]
@@ -185,6 +186,115 @@ shader_parameter/wiggle = 0.002
 font = ExtResource("7_jf7ne")
 font_size = 8
 
+[sub_resource type="Animation" id="Animation_3egtw"]
+resource_name = "InsertCoin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InsertCoin2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PushOnePlayer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_qwh7t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InsertCoin2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PushOnePlayer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_xoefn"]
+resource_name = "push1player"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InsertCoin2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PushOnePlayer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5l8q6"]
+_data = {
+"InsertCoin": SubResource("Animation_3egtw"),
+"RESET": SubResource("Animation_qwh7t"),
+"push1player": SubResource("Animation_xoefn")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mgqx6"]
+animation = &"InsertCoin"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bmpy4"]
+animation = &"push1player"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tj4tr"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pc7kb"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_via4r"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xw2ef"]
+states/InsertCoin/node = SubResource("AnimationNodeAnimation_mgqx6")
+states/InsertCoin/position = Vector2(383, 150)
+states/push1player/node = SubResource("AnimationNodeAnimation_bmpy4")
+states/push1player/position = Vector2(643, 135)
+transitions = ["Start", "InsertCoin", SubResource("AnimationNodeStateMachineTransition_tj4tr"), "InsertCoin", "push1player", SubResource("AnimationNodeStateMachineTransition_pc7kb"), "push1player", "End", SubResource("AnimationNodeStateMachineTransition_via4r")]
+
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_qxnmb")
 
@@ -210,6 +320,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Pug" parent="." instance=ExtResource("7_juqwh")]
+position = Vector2(91, -56)
+
+[node name="PlayerDemo" parent="." instance=ExtResource("7_dd267")]
+position = Vector2(-90, 85)
+
+[node name="Player" parent="." instance=ExtResource("3_bnm47")]
+visible = false
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -250,13 +369,43 @@ text = "basic skills:
 z: shoot bubbles"
 label_settings = SubResource("LabelSettings_38va3")
 
-[node name="PlayerDemo" parent="." instance=ExtResource("7_dd267")]
-position = Vector2(-90, 85)
-
-[node name="Player" parent="." instance=ExtResource("3_bnm47")]
+[node name="InsertCoin2" type="Label" parent="."]
 visible = false
+offset_left = -52.0
+offset_top = 22.0
+offset_right = 164.0
+offset_bottom = 97.0
+text = "Insert COIN"
+label_settings = SubResource("LabelSettings_38va3")
+
+[node name="PushOnePlayer" type="Label" parent="."]
+offset_left = -52.0
+offset_top = 22.0
+offset_right = 164.0
+offset_bottom = 97.0
+text = "push one player"
+label_settings = SubResource("LabelSettings_38va3")
+clip_text = true
+
+[node name="HighScore" type="Label" parent="."]
+offset_left = -132.0
+offset_top = -65.0
+offset_right = 84.0
+offset_bottom = 10.0
+label_settings = SubResource("LabelSettings_38va3")
+horizontal_alignment = 2
+clip_text = true
 
 [node name="InsertCoin" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_lomst")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5l8q6")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_xw2ef")
+anim_player = NodePath("../AnimationPlayer")
 
 [connection signal="timeout" from="TimerDemo" to="." method="_on_timer_demo_timeout"]

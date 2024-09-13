@@ -43,7 +43,7 @@ func print_rnd_chars():
 
 	else:
 		var random_colour = Color(randf(), randf(), randf())
-		$LabelRndChars.label_settings.font_color = random_colour
+		$LabelRndChars.modulate =  random_colour
 		$LabelRndChars.text=get_rnd_chars(characters, 40)
 		$LabelRndChars.visible = false
 

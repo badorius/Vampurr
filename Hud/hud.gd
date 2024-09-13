@@ -31,7 +31,7 @@ func update_hud():
 		2:
 			$BoxContainerLives/IconLive1.visible = false
 			
-	$Credits.text = "Credit " + str(credits)
+	$Credits.text = str(credits)
 	$Socre.text = str(score)
 
 	

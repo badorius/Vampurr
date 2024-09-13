@@ -100,8 +100,8 @@ script = ExtResource("1_jy2jn")
 [node name="LabelRndChars" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_1whlk")
 text = "a"
-label_settings = SubResource("LabelSettings_7auxd")
 
 [node name="LabelRomCheck" type="Label" parent="."]
 visible = false

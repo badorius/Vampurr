@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -300.0
 const POINTS : int = 100
 
 const PointsIndicator = preload("res://Hud/points_indicator.tscn")
+const fish = preload("res://Items/Assets/fish.tscn")
 
 var state_machine
 @onready var hud : CanvasLayer = get_node("../Hud")
@@ -99,15 +100,17 @@ func die():
 	#FIX Random size
 	var offset_position = randi() % 20
 	var main = get_tree().current_scene
-	var D = PointsIndicator.instantiate()
+	var fish = fish.instantiate()
+
+	var points = PointsIndicator.instantiate()
 	var color = "white"
-	D.global_position = Vector2(global_position.x - offset_position, (global_position.y) - offset_position)
-	D.show_points(POINTS, color)
-	main.add_child(D)
+	points.global_position = Vector2(global_position.x - offset_position, (global_position.y) - offset_position)
+	points.show_points(POINTS, color)
+	fish.global_position = Vector2(global_position.x - offset_position, (global_position.y) - offset_position)
+	main.add_child(points)
+	main.add_child(fish)
 
-	#drop_item()
 
-	
 	GameManager.score += POINTS
 	hud.update_hud()
 	#Needs animation die and points for playerzz

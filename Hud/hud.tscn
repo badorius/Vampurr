@@ -25,8 +25,10 @@ offset_left = 83.0
 offset_top = 7.0
 offset_right = 163.0
 offset_bottom = 30.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_77418")
+theme_override_font_sizes/font_size = 8
 text = "50000"
-label_settings = SubResource("LabelSettings_qpokr")
 
 [node name="ScoreLabel" type="Label" parent="."]
 offset_top = -1.0
@@ -39,16 +41,28 @@ label_settings = SubResource("LabelSettings_qpokr")
 offset_top = 7.0
 offset_right = 80.0
 offset_bottom = 30.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_77418")
+theme_override_font_sizes/font_size = 8
 text = "0"
-label_settings = SubResource("LabelSettings_qpokr")
 
-[node name="Credits" type="Label" parent="."]
+[node name="CreditsLabel" type="Label" parent="."]
 offset_left = 184.0
 offset_top = 208.0
 offset_right = 264.0
 offset_bottom = 231.0
-text = "Credit 0"
+text = "Credit"
 label_settings = SubResource("LabelSettings_qpokr")
+
+[node name="Credits" type="Label" parent="."]
+offset_left = 240.0
+offset_top = 208.0
+offset_right = 320.0
+offset_bottom = 231.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_77418")
+theme_override_font_sizes/font_size = 8
+text = "0"
 
 [node name="BoxContainerLives" type="BoxContainer" parent="."]
 offset_left = 222.0
