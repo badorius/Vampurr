@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bne62btmg4xln"]
+[gd_scene load_steps=6 format=3 uid="uid://bne62btmg4xln"]
 
 [ext_resource type="Script" path="res://Items/CataFood/CatFood.gd" id="1_81x2g"]
 [ext_resource type="Texture2D" uid="uid://b16qro46ymmci" path="res://Items/CataFood/Assets/CatFood.png" id="2_adhmc"]
+[ext_resource type="AudioStream" uid="uid://cnf3t3co4mgxq" path="res://Items/Fish/Assets/points.mp3" id="3_o7sa2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wf3x6"]
 radius = 4.0
@@ -29,5 +30,6 @@ shape = SubResource("RectangleShape2D_hxr1x")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="Pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_o7sa2")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

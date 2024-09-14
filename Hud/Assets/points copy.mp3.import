@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bmi7m2tu4sqjh"
+path="res://.godot/imported/points copy.mp3-20cf6aa24822caa0d5aa648f4115d171.mp3str"
+
+[deps]
+
+source_file="res://Hud/Assets/points copy.mp3"
+dest_files=["res://.godot/imported/points copy.mp3-20cf6aa24822caa0d5aa648f4115d171.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

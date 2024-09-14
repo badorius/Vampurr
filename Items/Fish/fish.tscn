@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://yfsikmvji4at"]
+[gd_scene load_steps=6 format=3 uid="uid://yfsikmvji4at"]
 
 [ext_resource type="Script" path="res://Items/Fish/fish.gd" id="1_d111y"]
 [ext_resource type="Texture2D" uid="uid://3tji1r36jbia" path="res://Items/Fish/Assets/fish1.png" id="1_qdwlu"]
+[ext_resource type="AudioStream" uid="uid://cnf3t3co4mgxq" path="res://Items/Fish/Assets/points.mp3" id="3_pmyi6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wf3x6"]
 radius = 4.0
@@ -28,5 +29,6 @@ shape = SubResource("CircleShape2D_tfnbg")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="Pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_pmyi6")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
