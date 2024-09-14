@@ -13,6 +13,8 @@ const PointsIndicator = preload("res://Hud/points_indicator.tscn")
 #Var state_machine animation
 var state_machine
 
+@export var StartPosition = global_position
+
 #Shot blood scene loaded to instanciate on shot
 const ShotBlood = preload("../ShotBlood/shot_blood.tscn")
 var ShotBloodDirection = 1
@@ -105,6 +107,8 @@ func shoting(ShotBlood_direction):
 	main.add_child(A)
 	
 func die():
+	state_machine.travel('Die')
+	global_position = StartPosition
 	GameManager.lives -= 1
 	HUD.update_hud()
 	if GameManager.lives <= 0:
