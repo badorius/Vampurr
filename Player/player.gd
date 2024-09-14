@@ -7,6 +7,9 @@ const JUMP_VELOCITY = -300.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+const PointsIndicator = preload("res://Hud/points_indicator.tscn")
+@onready var hud : CanvasLayer = get_node("../Hud")
+
 #Var state_machine animation
 var state_machine
 
@@ -110,7 +113,18 @@ func die():
 func gameover():
 		get_tree().quit()
 		
-		
+func showpoints(VALUE):
+	var offset_position = randi() % 20
+	var main = get_tree().current_scene
+	var points = PointsIndicator.instantiate()
+	var color = "white"
+	points.global_position = Vector2(global_position.x - offset_position, (global_position.y) - offset_position)
+	points.show_points(VALUE, color)
+	main.add_child(points)
+	
+	GameManager.score += VALUE
+	hud.update_hud() 
+	
 		
 #SIGNALS START HERE
 func _on_area_2d_body_entered(body: Node2D) -> void:

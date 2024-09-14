@@ -5,11 +5,9 @@ const SPEED = 30.0
 const JUMP_VELOCITY = -300.0
 const POINTS : int = 100
 
-const PointsIndicator = preload("res://Hud/points_indicator.tscn")
-const fish = preload("res://Items/Assets/fish.tscn")
+const randomitem = preload("res://Items/RandomItem/RandomItem.tscn")
 
 var state_machine
-@onready var hud : CanvasLayer = get_node("../Hud")
 
 #Sounds
 @onready var popdie = $PopDie
@@ -100,23 +98,13 @@ func die():
 	#FIX Random size
 	var offset_position = randi() % 20
 	var main = get_tree().current_scene
-	var fish = fish.instantiate()
-
-	var points = PointsIndicator.instantiate()
+	var item = randomitem.instantiate()
 	var color = "white"
-	points.global_position = Vector2(global_position.x - offset_position, (global_position.y) - offset_position)
-	points.show_points(POINTS, color)
-	fish.global_position = Vector2(global_position.x - offset_position, (global_position.y) - offset_position)
-	main.add_child(points)
-	main.add_child(fish)
+	item.global_position = Vector2(global_position.x - offset_position, (global_position.y) - offset_position)
+	main.add_child(item)
 
-
-	GameManager.score += POINTS
-	hud.update_hud()
-	#Needs animation die and points for playerzz
+	#Needs animation die and points for playerz
 	state_machine.travel('Die')
-	#Pending animatino die pug and drop item
-	#queue_free()
 
 
 
@@ -127,6 +115,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if body.is_in_group("Weapon") and not is_bubbled:
 			Bubble()
 		if body.is_in_group("Player") and is_bubbled:
+			body.showpoints(POINTS)
 			die()
 		else:
 			direction = direction * -1
