@@ -23,6 +23,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func drop_movement():
+	global_position 
 
 # Función que selecciona un item aleatorio y lo instancia
 func instantiate_random_item():

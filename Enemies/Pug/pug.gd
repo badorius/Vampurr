@@ -25,7 +25,8 @@ var state_machine
 
 
 func _ready() -> void:
-	
+	$CollisionShape2D.disabled = false
+	$Area2D/CollisionShape2D2.disabled = false
 	state_machine = $AnimationTree.get('parameters/playback')
 	state_machine.travel('Run')
 	
@@ -90,11 +91,11 @@ func debuganimation():
 func die():
 	is_bubbled = false
 	is_dead = true
-	state_machine.travel('Die')
 	direction = 0
-	velocity.x = move_toward(velocity.x, 0, SPEED)
-	velocity.y = 1 * SPEED
-	
+	velocity.x = 0
+	velocity.y = -1 * SPEED
+	state_machine.travel('Die')
+
 	#FIX Random size
 	var offset_position = randi() % 20
 	var main = get_tree().current_scene
@@ -104,7 +105,6 @@ func die():
 	main.add_child(item)
 
 	#Needs animation die and points for playerz
-	state_machine.travel('Die')
 
 
 

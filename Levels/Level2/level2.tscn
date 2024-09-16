@@ -212,5 +212,6 @@ grow_vertical = 2
 stream = ExtResource("5_2lakx")
 
 [node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [node name="Hud" parent="." instance=ExtResource("6_glo4c")]
