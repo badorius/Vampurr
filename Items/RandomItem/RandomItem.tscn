@@ -1,21 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqqrtgey5d2v4"]
+[gd_scene load_steps=2 format=3 uid="uid://dqqrtgey5d2v4"]
 
 [ext_resource type="Script" path="res://Items/RandomItem/random_item.gd" id="1_amvmm"]
 
-[sub_resource type="Animation" id="Animation_i2vfi"]
-resource_name = "Fly"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_cds7f"]
-_data = {
-"Fly": SubResource("Animation_i2vfi")
-}
-
 [node name="RandomItem" type="Node2D"]
 script = ExtResource("1_amvmm")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_cds7f")
-}
