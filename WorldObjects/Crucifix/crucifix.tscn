@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bw0ek282hx50u"]
+
+[ext_resource type="Texture2D" uid="uid://c57x2a2ig8ja" path="res://WorldObjects/Crucifix/Assets/crucifix.png" id="1_8djom"]
+[ext_resource type="Texture2D" uid="uid://cv0mo3xirtg0w" path="res://WorldObjects/Crucifix/Assets/crucifix_inverted.png" id="2_2uci6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_guwhb"]
+size = Vector2(13, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lo3wf"]
+size = Vector2(16, 16)
+
+[node name="Crucifix" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_guwhb")
+
+[node name="Crucifix" type="Sprite2D" parent="."]
+texture = ExtResource("1_8djom")
+
+[node name="CrucifixInverted" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_2uci6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_lo3wf")
