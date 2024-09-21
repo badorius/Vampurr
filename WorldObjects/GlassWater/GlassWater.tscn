@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://baodsrkuvil6d"]
+
+[ext_resource type="Texture2D" uid="uid://v5ysl71fnb38" path="res://WorldObjects/GlassWater/Assets/GlassWater.png" id="1_m4w8c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_guwhb"]
+size = Vector2(13, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lo3wf"]
+size = Vector2(16, 16)
+
+[node name="GlassWater" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_guwhb")
+
+[node name="GlassWater" type="Sprite2D" parent="."]
+texture = ExtResource("1_m4w8c")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_lo3wf")
