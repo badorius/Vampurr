@@ -9,13 +9,15 @@ const randomitem = preload("res://Items/RandomItem/RandomItem.tscn")
 
 var state_machine
 
+var screen_size  # Tamaño de la pantalla
+
 #Sounds
 @onready var popdie = $PopDie
 
 #Start random direction 
 @onready var random = RandomNumberGenerator.new()
 
-@export var direction = 0
+@export var direction = -1
 @export var jump = 0
 @export var rect : Vector2
 @export var is_bubbled : bool = false
@@ -25,30 +27,28 @@ var state_machine
 
 
 func _ready() -> void:
+	screen_size = get_viewport().get_visible_rect().size
 	$CollisionShape2D.disabled = false
 	$Area2D/CollisionShape2D2.disabled = false
 	state_machine = $AnimationTree.get('parameters/playback')
 	state_machine.travel('Run')
 	
 	RandomNumberGenerator.new()
-	random_direction()
 	random_jump()
-	
-func random_direction():
-	var randomnumber = random.randi_range(-1, 1)
-	if randomnumber == 0:
-		random_direction()
-	else:
-		direction = randomnumber
 		
 		
 func random_jump():
-	jump = random.randi_range(1, 10)
+	jump = random.randi_range(1, 50)
 
 
 func _physics_process(delta: float) -> void:
 	
 	if not is_dead:
+		random_jump()
+
+		if is_on_edge():
+			direction = direction * -1
+			
 		flip_direction()
 		if not is_on_floor() and not is_bubbled:
 			velocity += get_gravity() * delta
@@ -107,6 +107,13 @@ func die():
 	#Needs animation die and points for playerz
 
 
+func is_on_edge():
+	print("Scrin size: ", screen_size.x/2 - 18)
+	print("Global position: ", global_position.x)
+	if abs(global_position.x) > abs(screen_size.x/2 - 24):
+		return true
+	else:
+		return false
 
 	
 #SIGNALS START HERE #PENDING FIX 
@@ -117,5 +124,3 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if body.is_in_group("Player") and is_bubbled:
 			body.showpoints(POINTS)
 			die()
-		else:
-			direction = direction * -1

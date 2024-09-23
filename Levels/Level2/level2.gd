@@ -7,7 +7,7 @@ extends Node2D
 @export var num_pug = 5
 @export var pug_scene: PackedScene = preload("res://Enemies/Pug/pug.tscn")
 @export var level_finished : bool = false
-
+ 
 
 # Var to get spawn_timer
 @onready var spawn_timer = $Timer
