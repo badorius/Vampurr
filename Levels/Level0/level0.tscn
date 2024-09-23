@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d0lx5j11l7vun" path="res://Levels/Level0/Assets/roomboot.png" id="3_fwldw"]
 [ext_resource type="PackedScene" uid="uid://du5do0d82lytg" path="res://Hud/hud.tscn" id="5_riomt"]
 [ext_resource type="PackedScene" uid="uid://dcwk72gd4pjwl" path="res://Player/player.tscn" id="6_uqkr7"]
-[ext_resource type="AudioStream" uid="uid://nrfm8qytgtw" path="res://Levels/Level0/Assets/Splash.mp3" id="7_64vv5"]
+[ext_resource type="AudioStream" uid="uid://cftp5fcf4hlwl" path="res://Levels/Level0/Assets/VampurrIngrid.mp3" id="7_1x8dt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7auxd"]
 font = ExtResource("2_1whlk")
@@ -68,11 +68,11 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "clips": [{
-"end_offset": 11.53,
+"end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("7_64vv5")
+"stream": ExtResource("7_1x8dt")
 }],
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.0333333)
 }
 tracks/1/use_blend = true
 
