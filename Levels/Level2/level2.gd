@@ -7,7 +7,7 @@ extends Node2D
 @export var num_pug = 5
 @export var pug_scene: PackedScene = preload("res://Enemies/Pug/pug.tscn")
 @export var level_finished : bool = false
- 
+
 
 # Var to get spawn_timer
 @onready var spawn_timer = $Timer
@@ -48,6 +48,8 @@ func spawn_pug():
 	add_child(pug_instance)
 	#Pass rect value to pug in order to get movement inteligence depending of sice window
 	pug_instance.rect = rect
+	pug_instance.global_position = $Cauldron.global_position
+	$Cauldron.bubble()
 	print("Pug instanciado en posición: ", pug_instance.position)
 
 func get_random_position() -> Vector2:

@@ -35,7 +35,8 @@ func _ready() -> void:
 	
 	RandomNumberGenerator.new()
 	random_jump()
-		
+	velocity.y = JUMP_VELOCITY 
+	state_machine.travel('Jump')
 		
 func random_jump():
 	jump = random.randi_range(1, 50)
@@ -84,10 +85,6 @@ func Bubble():
 	state_machine.travel('Bubble')
 	velocity.y = -1 * SPEED
 	
-func debuganimation():
-	print("Animation Entered")
-	
-	
 func die():
 	is_bubbled = false
 	is_dead = true
@@ -108,8 +105,6 @@ func die():
 
 
 func is_on_edge():
-	print("Scrin size: ", screen_size.x/2 - 18)
-	print("Global position: ", global_position.x)
 	if abs(global_position.x) > abs(screen_size.x/2 - 24):
 		return true
 	else:
@@ -124,3 +119,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if body.is_in_group("Player") and is_bubbled:
 			body.showpoints(POINTS)
 			die()
+		if body.is_in_group("Enemies") and not is_bubbled:
+			direction = direction * -1
