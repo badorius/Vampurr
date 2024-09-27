@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://cdquteil5gnye" path="res://Levels/Level2/assets/Vampurr.mp3" id="5_2lakx"]
 [ext_resource type="PackedScene" uid="uid://du5do0d82lytg" path="res://Hud/hud.tscn" id="6_glo4c"]
 [ext_resource type="PackedScene" uid="uid://bw0ek282hx50u" path="res://WorldObjects/Crucifix/crucifix.tscn" id="9_h1cdt"]
-[ext_resource type="PackedScene" uid="uid://b8teg1mga1yu5" path="res://WorldObjects/Cauldron/Cauldron.tscn" id="10_hcsco"]
+[ext_resource type="PackedScene" uid="uid://b8teg1mga1yu5" path="res://WorldObjects/Cauldron/Cauldron.tscn" id="10_x6eoj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vu0pw"]
 texture = ExtResource("2_7tmrn")
@@ -222,5 +222,5 @@ position = Vector2(-8, -88)
 [node name="Crucifix2" parent="." instance=ExtResource("9_h1cdt")]
 position = Vector2(8, -88)
 
-[node name="Cauldron" parent="." instance=ExtResource("10_hcsco")]
-position = Vector2(0, -7)
+[node name="Cauldron" parent="." instance=ExtResource("10_x6eoj")]
+position = Vector2(-1, -8)

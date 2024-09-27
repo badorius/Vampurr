@@ -1,0 +1,149 @@
+[gd_scene load_steps=13 format=3 uid="uid://cxx7r26o8ah2o"]
+
+[ext_resource type="Script" path="res://WorldObjects/GreenBubbles/GreenBubbles.gd" id="1_1q45r"]
+[ext_resource type="Texture2D" uid="uid://0s8mew05w0m0" path="res://WorldObjects/Cauldron/Assets/cauldronBooble.png" id="2_3r561"]
+
+[sub_resource type="Animation" id="Animation_wkpur"]
+resource_name = "Bubble"
+length = 0.9
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GreenBubbles:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7, 9, 10, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GreenBubbles:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -8), Vector2(0, -32)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4dffn"]
+resource_name = "Iddle"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GreenBubbles:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+
+[sub_resource type="Animation" id="Animation_ahajp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GreenBubbles:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GreenBubbles:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8asbh"]
+_data = {
+"Bubble": SubResource("Animation_wkpur"),
+"Iddle": SubResource("Animation_4dffn"),
+"RESET": SubResource("Animation_ahajp")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wwv2y"]
+animation = &"Bubble"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vdnpy"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hwmeu"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6hi0v"]
+states/Bubble/node = SubResource("AnimationNodeAnimation_wwv2y")
+states/Bubble/position = Vector2(542, 160)
+states/Start/position = Vector2(183, 145)
+transitions = ["Bubble", "End", SubResource("AnimationNodeStateMachineTransition_vdnpy"), "Start", "Bubble", SubResource("AnimationNodeStateMachineTransition_hwmeu")]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_guwhb"]
+size = Vector2(13, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lo3wf"]
+size = Vector2(16, 16)
+
+[node name="GreenBubbles" type="CharacterBody2D"]
+script = ExtResource("1_1q45r")
+
+[node name="GreenBubbles" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("2_3r561")
+hframes = 9
+vframes = 9
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8asbh")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+deterministic = false
+tree_root = SubResource("AnimationNodeStateMachine_6hi0v")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_guwhb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_lo3wf")
