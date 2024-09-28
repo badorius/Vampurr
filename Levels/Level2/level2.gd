@@ -32,10 +32,11 @@ func _ready():
 func _on_SpawnTimer_timeout():
 	if pug_spawned < num_pug:
 		spawn_pug()
-		pug_spawned += 1
 		schedule_next_spawn()
 	else:
 		spawn_timer.stop()
+		$Cauldron.shed()
+
 
 func schedule_next_spawn():
 	var random_interval = randi_range(1, 5)  # Schedule next between 1, 3 seconds
@@ -43,17 +44,17 @@ func schedule_next_spawn():
 	spawn_timer.start()
 
 func spawn_pug():
-	if pug_spawned < num_pug:
-		var pug_instance = pug_scene.instantiate()
-		pug_instance.position = get_random_position()
-		add_child(pug_instance)
-		#Pass rect value to pug in order to get movement inteligence depending of sice window
-		pug_instance.rect = rect
-		pug_instance.global_position = $Cauldron.global_position
-		$Cauldron.bubble()
-		print("Pug instanciado en posición: ", pug_instance.position)
-	else:
-		$Cauldron.explode()
+	print (pug_spawned, " ", num_pug)
+	var pug_instance = pug_scene.instantiate()
+	pug_instance.position = get_random_position()
+	add_child(pug_instance)
+	#Pass rect value to pug in order to get movement inteligence depending of sice window
+	pug_instance.rect = rect
+	pug_instance.global_position = $Cauldron.global_position
+	pug_spawned += 1
+	$Cauldron.bubble()
+	print("Pug instanciado en posición: ", pug_instance.position)
+
 
 func get_random_position() -> Vector2:
 	#Randomize x position from rect value

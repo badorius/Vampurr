@@ -216,7 +216,7 @@ autostart = true
 
 [node name="Hud" parent="." instance=ExtResource("6_glo4c")]
 
-[node name="Crucifix" parent="." instance=ExtResource("9_h1cdt")]
+[node name="Crucifix1" parent="." instance=ExtResource("9_h1cdt")]
 position = Vector2(-8, -88)
 
 [node name="Crucifix2" parent="." instance=ExtResource("9_h1cdt")]

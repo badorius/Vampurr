@@ -35,6 +35,8 @@ Enemies=""
 Weapon=""
 Player=""
 Items=""
+Cauldrons=""
+Crucifix=""
 
 [input]
 

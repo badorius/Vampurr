@@ -19,24 +19,6 @@ tracks/0/keys = {
 "values": [18, 19, 20, 21, 22, 23, 24, 25, 26]
 }
 
-[sub_resource type="Animation" id="Animation_dlejs"]
-resource_name = "Iddle"
-length = 0.82
-loop_mode = 2
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Cauldron:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
-}
-
 [sub_resource type="Animation" id="Animation_ahajp"]
 length = 0.001
 tracks/0/type = "value"
@@ -50,6 +32,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:is_shed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_xm2cp"]
@@ -67,20 +61,50 @@ tracks/0/keys = {
 "update": 1,
 "values": [8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:is_shed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_dlejs"]
+resource_name = "Iddle"
+length = 0.82
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cauldron:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8asbh"]
 _data = {
+"ChupChup": SubResource("Animation_dlejs"),
 "Explode": SubResource("Animation_gai7m"),
-"Iddle": SubResource("Animation_dlejs"),
 "RESET": SubResource("Animation_ahajp"),
 "Shed": SubResource("Animation_xm2cp")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_py0x3"]
+animation = &"ChupChup"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x8hdt"]
 animation = &"Explode"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_32sac"]
-animation = &"Iddle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y2w3v"]
 animation = &"Shed"
@@ -89,19 +113,18 @@ animation = &"Shed"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mynxw"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ynipp"]
-advance_mode = 2
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uskis"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_43rc4"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5x2cj"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3pnw4"]
+states/ChupChup/node = SubResource("AnimationNodeAnimation_py0x3")
+states/ChupChup/position = Vector2(364, 74)
 states/Explode/node = SubResource("AnimationNodeAnimation_x8hdt")
-states/Explode/position = Vector2(788, 36)
-states/Iddle/node = SubResource("AnimationNodeAnimation_32sac")
-states/Iddle/position = Vector2(315, 60)
+states/Explode/position = Vector2(748, 95)
 states/Shed/node = SubResource("AnimationNodeAnimation_y2w3v")
-states/Shed/position = Vector2(573, 56)
-transitions = ["Shed", "Explode", SubResource("AnimationNodeStateMachineTransition_tn2u4"), "Explode", "End", SubResource("AnimationNodeStateMachineTransition_mynxw"), "Start", "Iddle", SubResource("AnimationNodeStateMachineTransition_ynipp"), "Iddle", "Shed", SubResource("AnimationNodeStateMachineTransition_43rc4")]
+states/Shed/position = Vector2(563, 95)
+transitions = ["Shed", "Explode", SubResource("AnimationNodeStateMachineTransition_tn2u4"), "Explode", "End", SubResource("AnimationNodeStateMachineTransition_mynxw"), "Start", "ChupChup", SubResource("AnimationNodeStateMachineTransition_uskis"), "ChupChup", "Shed", SubResource("AnimationNodeStateMachineTransition_5x2cj")]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_guwhb"]
 size = Vector2(13, 13)
@@ -109,7 +132,7 @@ size = Vector2(13, 13)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lo3wf"]
 size = Vector2(16, 16)
 
-[node name="Cauldron" type="CharacterBody2D"]
+[node name="Cauldron" type="CharacterBody2D" groups=["Cauldrons"]]
 script = ExtResource("1_xa3fm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -135,3 +158,5 @@ vframes = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_lo3wf")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

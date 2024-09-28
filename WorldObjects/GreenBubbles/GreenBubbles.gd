@@ -11,8 +11,8 @@ func _ready() -> void:
 	#Assign viewport rect value / 2.0 in order to work between 1 vs -1 
 	state_machine = $AnimationTree.get('parameters/playback')
 	bubble()
-	state_machine.travel('Iddle')
-
+	$CollisionShape2D.disabled = true
+	$Area2D/CollisionShape2D.disabled = true
 
 func bubble():
 	state_machine.travel('Bubble')
