@@ -23,6 +23,7 @@ var screen_size  # Tamaño de la pantalla
 @export var is_bubbled : bool = false
 @export var is_dead : bool = false
 
+@onready var timer = $Timer
 
 
 
@@ -63,8 +64,6 @@ func _physics_process(delta: float) -> void:
 			if jump != 1 and  is_on_floor() and not is_bubbled:
 				state_machine.travel('Run')
 
-		if is_bubbled:
-			Bubble()
 
 	velocity.x = direction * SPEED
 	
@@ -84,6 +83,7 @@ func Bubble():
 	is_bubbled = true
 	state_machine.travel('Bubble')
 	velocity.y = -1 * SPEED
+	timer.start()
 	
 func die():
 	is_bubbled = false
@@ -121,3 +121,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			die()
 		if body.is_in_group("Enemies") and not is_bubbled:
 			direction = direction * -1
+			
+
+
+
+func _on_timer_timeout() -> void:
+	is_bubbled = false
+	timer.stop() 

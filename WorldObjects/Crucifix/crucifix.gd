@@ -11,10 +11,10 @@ const JUMP_VELOCITY = -400.0
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor() and is_inverted:
+		$Area2D/CollisionShape2D.disabled = true
+		#$CollisionShape2D.disabled = true
 		velocity += get_gravity() * delta
-
-	move_and_slide()
-
+		move_and_slide()
 func inverted():
 	$Crucifix.visible = false
 	$CrucifixInverted.visible = true

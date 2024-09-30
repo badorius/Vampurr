@@ -205,6 +205,8 @@ transitions = ["Start", "Iddle", SubResource("AnimationNodeStateMachineTransitio
 graph_offset = Vector2(-218, 189)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 2
+collision_mask = 33
 script = ExtResource("1_au11u")
 
 [node name="Vampurv1Ingrid" type="Sprite2D" parent="."]
@@ -236,6 +238,8 @@ stream = ExtResource("3_s5s15")
 stream = ExtResource("4_ariov")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 visible = false

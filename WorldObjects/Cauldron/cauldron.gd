@@ -20,15 +20,15 @@ func _ready() -> void:
 	state_machine = $AnimationTree.get('parameters/playback')
 	#bubble()
 	state_machine.travel('ChupChup')
-	$CollisionShape2D.disabled = true
-	$Area2D/CollisionShape2D.disabled = true
+	#$CollisionShape2D.disabled = true
+	#$Area2D/CollisionShape2D.disabled = true
 	is_shed = false
 	
 func _physics_process(delta: float) -> void:
 	if is_shed:
 		velocity.y = -1 * SPEED
 	
-	move_and_slide()
+		move_and_slide()
 
 
 func explode():

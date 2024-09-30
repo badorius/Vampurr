@@ -294,6 +294,7 @@ graph_offset = Vector2(34, 32)
 
 [node name="Pug" type="CharacterBody2D" groups=["Enemies"]]
 position = Vector2(0, 10)
+collision_layer = 4
 script = ExtResource("1_p60lt")
 
 [node name="Vampurv1Ingrid" type="Sprite2D" parent="."]
@@ -312,6 +313,8 @@ disabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(1.22867, 1.22867)
+collision_layer = 4
+collision_mask = 11
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(2.03472, -0.435758)
@@ -330,4 +333,8 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="PopDie" type="AudioStreamPlayer2D" parent="."]
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

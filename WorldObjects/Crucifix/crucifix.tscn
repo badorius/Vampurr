@@ -11,6 +11,8 @@ size = Vector2(13, 13)
 size = Vector2(16, 16)
 
 [node name="Crucifix" type="CharacterBody2D" groups=["Crucifix"]]
+collision_layer = 32
+collision_mask = 3
 script = ExtResource("1_howvx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -25,6 +27,8 @@ visible = false
 texture = ExtResource("2_2uci6")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_lo3wf")
