@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://b8teg1mga1yu5"]
+[gd_scene load_steps=23 format=3 uid="uid://b8teg1mga1yu5"]
 
 [ext_resource type="Texture2D" uid="uid://ddp86mfi0xbu" path="res://WorldObjects/Cauldron/Assets/cauldron.png" id="1_b1vnr"]
 [ext_resource type="Script" path="res://WorldObjects/Cauldron/cauldron.gd" id="1_xa3fm"]
+[ext_resource type="AudioStream" uid="uid://bliw708v76yax" path="res://WorldObjects/Cauldron/Assets/Hit1.mp3" id="2_h5cli"]
 
 [sub_resource type="Animation" id="Animation_dlejs"]
 resource_name = "Iddle"
@@ -63,6 +64,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_xm2cp"]
 resource_name = "Explode"
@@ -92,39 +105,80 @@ tracks/1/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_dbtfs"]
+resource_name = "Hit"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cauldron:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14, 0.16),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15, 16]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14, 0.16, 0.18),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0.125, 0.125, 1), Color(1, 0.25, 0.25, 1), Color(1, 0.375, 0.375, 1), Color(1, 0.5, 0.5, 1), Color(1, 0.625, 0.625, 1), Color(1, 0.75, 0.75, 1), Color(1, 0.875, 0.875, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8asbh"]
 _data = {
 "ChupChup": SubResource("Animation_dlejs"),
+"Die": SubResource("Animation_xm2cp"),
 "Explode": SubResource("Animation_gai7m"),
-"RESET": SubResource("Animation_ahajp"),
-"Shed": SubResource("Animation_xm2cp")
+"Hit": SubResource("Animation_dbtfs"),
+"RESET": SubResource("Animation_ahajp")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_py0x3"]
 animation = &"ChupChup"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mgpfu"]
+animation = &"Die"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x8hdt"]
 animation = &"Explode"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y2w3v"]
-animation = &"Shed"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tn2u4"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gvjeo"]
+animation = &"Hit"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mynxw"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uskis"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5x2cj"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wu8jc"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_shuvp"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tbs51"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qk645"]
+switch_mode = 2
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3pnw4"]
 states/ChupChup/node = SubResource("AnimationNodeAnimation_py0x3")
-states/ChupChup/position = Vector2(364, 74)
+states/ChupChup/position = Vector2(334, 211)
+states/Die/node = SubResource("AnimationNodeAnimation_mgpfu")
+states/Die/position = Vector2(614, 74)
 states/Explode/node = SubResource("AnimationNodeAnimation_x8hdt")
 states/Explode/position = Vector2(748, 95)
-states/Shed/node = SubResource("AnimationNodeAnimation_y2w3v")
-states/Shed/position = Vector2(563, 95)
-transitions = ["Shed", "Explode", SubResource("AnimationNodeStateMachineTransition_tn2u4"), "Explode", "End", SubResource("AnimationNodeStateMachineTransition_mynxw"), "Start", "ChupChup", SubResource("AnimationNodeStateMachineTransition_uskis"), "ChupChup", "Shed", SubResource("AnimationNodeStateMachineTransition_5x2cj")]
+states/Hit/node = SubResource("AnimationNodeAnimation_gvjeo")
+states/Hit/position = Vector2(493, 69)
+transitions = ["Explode", "End", SubResource("AnimationNodeStateMachineTransition_mynxw"), "Start", "ChupChup", SubResource("AnimationNodeStateMachineTransition_uskis"), "Die", "Explode", SubResource("AnimationNodeStateMachineTransition_wu8jc"), "ChupChup", "Hit", SubResource("AnimationNodeStateMachineTransition_shuvp"), "Hit", "Die", SubResource("AnimationNodeStateMachineTransition_tbs51"), "Hit", "ChupChup", SubResource("AnimationNodeStateMachineTransition_qk645")]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_guwhb"]
 size = Vector2(13, 13)
@@ -161,5 +215,8 @@ collision_mask = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_lo3wf")
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_h5cli")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

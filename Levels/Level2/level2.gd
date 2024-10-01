@@ -4,7 +4,6 @@ extends Node2D
 @export var rect : Vector2
 
 #Var enemies to instantiate on level:
-@export var num_pug = 5
 @export var pug_scene: PackedScene = preload("res://Enemies/Pug/pug.tscn")
 @export var level_finished : bool = false
 
@@ -30,12 +29,12 @@ func _ready():
 	
 	
 func _on_SpawnTimer_timeout():
-	if pug_spawned < num_pug:
+	if not $Cauldron.is_shed:
 		spawn_pug()
 		schedule_next_spawn()
 	else:
 		spawn_timer.stop()
-		$Cauldron.shed()
+		#$Cauldron.shed()
 
 
 func schedule_next_spawn():
@@ -44,7 +43,6 @@ func schedule_next_spawn():
 	spawn_timer.start()
 
 func spawn_pug():
-	print (pug_spawned, " ", num_pug)
 	var pug_instance = pug_scene.instantiate()
 	pug_instance.position = get_random_position()
 	add_child(pug_instance)
