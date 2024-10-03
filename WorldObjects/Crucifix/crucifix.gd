@@ -5,12 +5,14 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 @export var is_inverted : bool = false
 
-@onready var Cauldron : CharacterBody2D = get_node("../Cauldron")
+@onready var player : CharacterBody2D = get_node("../Player")
+@export var is_near_player : bool = false
 
 
-
-func _physics_process(delta: float) -> void:
+func _ready() -> void:
+	pass
 	
+func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor() and is_inverted:
 		$Area2D/CollisionShape2D.disabled = true

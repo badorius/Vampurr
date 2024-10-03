@@ -16,15 +16,6 @@ var state_machine
 @export var is_dead : bool = false
 @export var green_bubble: PackedScene = preload("res://WorldObjects/GreenBubbles/GreenBubbles.tscn")
 
-#Needed to call crucifix inverted when cauldron dies or complete 
-@onready var Crucifix1_floor1 : CharacterBody2D = get_node("../Crucifix1_floor1")
-@onready var Crucifix2_floor1 : CharacterBody2D = get_node("../Crucifix2_floor1")
-@onready var Crucifix1_floor2 : CharacterBody2D = get_node("../Crucifix1_floor2")
-@onready var Crucifix2_floor2 : CharacterBody2D = get_node("../Crucifix2_floor2")
-@onready var Crucifix3_floor2 : CharacterBody2D = get_node("../Crucifix3_floor2")
-@onready var Crucifix4_floor2 : CharacterBody2D = get_node("../Crucifix4_floor2")
-@onready var Crucifix1_floor3 : CharacterBody2D = get_node("../Crucifix1_floor3")
-@onready var Crucifix2_floor3 : CharacterBody2D = get_node("../Crucifix2_floor3")
 
 @onready var player : CharacterBody2D = get_node("../Player")
 
@@ -46,10 +37,10 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	# Define la distancia máxima en la cual consideras que el jugador está "cerca" del cauldron.
-	var proximity_distance = 25  # Ajusta este valor según lo necesario
+	var proximity_distance = 50  # Ajusta este valor según lo necesario
 
 	# Verifica si la distancia en el eje Y entre el jugador y el cauldron está dentro del rango permitido.
-	if abs(global_position.y - player.global_position.y) <= proximity_distance:
+	if abs(global_position.y) - abs(player.global_position.y) <= proximity_distance:
 		is_near_player = true
 	else:
 		is_near_player = false
@@ -87,33 +78,13 @@ func spawn_pug():
 
 
 func explode():
-	#Pending animation explode to open crucifyx dors
 	is_dead = true
 	state_machine.travel('Die')
 
 func shed():
 	is_shed = true
 	state_machine.travel('Die')
-	var floor = get_floor()  # Determina el piso en el que está el cauldron.
-	print(floor)
-	match floor:
-		1:
-			Crucifix1_floor1.inverted()
-			Crucifix2_floor1.inverted()
-		2:
-			Crucifix1_floor2.inverted()
-			Crucifix2_floor2.inverted()
-			Crucifix3_floor2.inverted()
-			Crucifix4_floor2.inverted()
-			
-		3:
-			Crucifix1_floor3.inverted()
-			Crucifix2_floor3.inverted()
 
-func get_floor():
-	# Calcula en qué piso se encuentra el cauldron.
-	var floor_height = 244  # Altura de cada piso.
-	return int(global_position.y / floor_height) + 1  # Devuelve el número de piso (asumiendo que empieza desde el piso 1).
 
 
 func bubble():
@@ -141,9 +112,6 @@ func die():
 	state_machine.travel('Explode')
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Crucifix") and is_shed:
-		body.showpoints(POINTS)
-		die()
 	if body.is_in_group("Weapon"):
 		hit()
 		HitSound.play()
