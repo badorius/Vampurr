@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cm740huixoh7n"]
+[gd_scene load_steps=15 format=4 uid="uid://cm740huixoh7n"]
 
 [ext_resource type="Script" path="res://Levels/Level2/level2.gd" id="1_hbiuq"]
 [ext_resource type="Texture2D" uid="uid://hffgyf33sk5y" path="res://Levels/Level2/assets/Dungeon Tile Set.png" id="2_7tmrn"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://du5do0d82lytg" path="res://Hud/hud.tscn" id="6_glo4c"]
 [ext_resource type="PackedScene" uid="uid://bw0ek282hx50u" path="res://WorldObjects/Crucifix/crucifix.tscn" id="9_h1cdt"]
 [ext_resource type="PackedScene" uid="uid://b8teg1mga1yu5" path="res://WorldObjects/Cauldron/Cauldron.tscn" id="10_x6eoj"]
+[ext_resource type="Texture2D" uid="uid://c6xlnjsflclvv" path="res://Enemies/Pug/Assets/pugboss.png" id="11_rmnyt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vu0pw"]
 texture = ExtResource("2_7tmrn")
@@ -214,7 +215,7 @@ stream = ExtResource("5_2lakx")
 [node name="Hud" parent="." instance=ExtResource("6_glo4c")]
 
 [node name="Cauldron1" parent="." instance=ExtResource("10_x6eoj")]
-position = Vector2(-1, -8)
+position = Vector2(0, -8)
 
 [node name="Cauldron2" parent="." instance=ExtResource("10_x6eoj")]
 position = Vector2(0, -232)
@@ -245,3 +246,7 @@ position = Vector2(-8, -472)
 
 [node name="Crucifix2_floor3" parent="." instance=ExtResource("9_h1cdt")]
 position = Vector2(8, -472)
+
+[node name="Pugboss" type="Sprite2D" parent="."]
+position = Vector2(-56, -497)
+texture = ExtResource("11_rmnyt")
