@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://dcjinf1aohow6"]
 
 [ext_resource type="Script" path="res://Enemies/Pug/pug.gd" id="1_7hry3"]
-[ext_resource type="Texture2D" uid="uid://bax2svkklxib5" path="res://Enemies/PugBoss/Assets/pugboss2-0001.png" id="2_hu8fy"]
+[ext_resource type="Texture2D" uid="uid://1hd7ms5g007w" path="res://Enemies/PugBoss/Assets/pugboss3.png" id="2_rrugj"]
 [ext_resource type="AudioStream" uid="uid://5ndysqwdnm1w" path="res://ShotBlood/Assets/pop_enemy.mp3" id="3_5or1g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22eiy"]
@@ -300,7 +300,7 @@ script = ExtResource("1_7hry3")
 [node name="Vampurv1Ingrid" type="Sprite2D" parent="."]
 self_modulate = Color(1, 0.411765, 1, 1)
 position = Vector2(2, 0)
-texture = ExtResource("2_hu8fy")
+texture = ExtResource("2_rrugj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.5, -0.535404)
