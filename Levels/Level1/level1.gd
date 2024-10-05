@@ -68,9 +68,10 @@ func _process(_delta):
 		GameManager.credits += 1
 		hud.update_hud()
 	if Input.is_action_just_pressed("push1player"):
-		GameManager.credits -= 1
-		hud.update_hud()
-		endlevel()
+		if GameManager.credits > 0:
+			GameManager.credits -= 1
+			hud.update_hud()
+			endlevel()
 		
 	match stage:
 		1:

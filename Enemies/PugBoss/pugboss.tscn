@@ -1,11 +1,11 @@
 [gd_scene load_steps=22 format=3 uid="uid://dcjinf1aohow6"]
 
-[ext_resource type="Script" path="res://Enemies/Pug/pug.gd" id="1_7hry3"]
+[ext_resource type="Script" path="res://Enemies/PugBoss/pugboss.gd" id="1_mcs6f"]
 [ext_resource type="Texture2D" uid="uid://1hd7ms5g007w" path="res://Enemies/PugBoss/Assets/pugboss3.png" id="2_rrugj"]
 [ext_resource type="AudioStream" uid="uid://5ndysqwdnm1w" path="res://ShotBlood/Assets/pop_enemy.mp3" id="3_5or1g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22eiy"]
-size = Vector2(39.6764, 22.8627)
+size = Vector2(49.6575, 44.7497)
 
 [sub_resource type="Animation" id="Animation_6v1f1"]
 resource_name = "Bubble"
@@ -15,22 +15,10 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Vampurv1Ingrid:frame_coords")
+tracks/0/path = NodePath("Vampurv1Ingrid:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(1, 2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Vampurv1Ingrid:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -129,22 +117,10 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Vampurv1Ingrid:frame_coords")
+tracks/0/path = NodePath("Vampurv1Ingrid:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1), Vector2i(6, 1), Vector2i(7, 1), Vector2i(8, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Vampurv1Ingrid:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -168,46 +144,34 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Vampurv1Ingrid:frame_coords")
+tracks/1/path = NodePath("Vampurv1Ingrid:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 1)]
+"update": 0,
+"values": [Color(1, 0.411765, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Vampurv1Ingrid:self_modulate")
+tracks/2/path = NodePath("Vampurv1Ingrid:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 0.411765, 1, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Vampurv1Ingrid:modulate")
+tracks/3/path = NodePath("CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CollisionShape2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -222,22 +186,10 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Vampurv1Ingrid:frame")
+tracks/0/path = NodePath("Vampurv1Ingrid:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Vampurv1Ingrid:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -295,7 +247,7 @@ graph_offset = Vector2(34, 32)
 [node name="PugBoss" type="CharacterBody2D" groups=["Enemies"]]
 position = Vector2(0, 10)
 collision_layer = 4
-script = ExtResource("1_7hry3")
+script = ExtResource("1_mcs6f")
 
 [node name="Vampurv1Ingrid" type="Sprite2D" parent="."]
 self_modulate = Color(1, 0.411765, 1, 1)
@@ -303,8 +255,8 @@ position = Vector2(2, 0)
 texture = ExtResource("2_rrugj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.5, -0.535404)
-scale = Vector2(0.558797, 0.969746)
+position = Vector2(2, 0)
+scale = Vector2(0.443035, 0.670396)
 shape = SubResource("RectangleShape2D_22eiy")
 disabled = true
 
@@ -314,9 +266,10 @@ collision_layer = 4
 collision_mask = 11
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1.62778, -9.53674e-07)
-scale = Vector2(0.492316, 0.854374)
+position = Vector2(1.62778, -0.813888)
+scale = Vector2(0.360581, 0.545628)
 shape = SubResource("RectangleShape2D_22eiy")
+disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 
 		# Wehn jump random is 1 pug jump.
 		if jump == 1 and is_on_floor() and not is_bubbled:
-			velocity.y = JUMP_VELOCITY 
+			velocity.y = JUMP_VELOCITY
 			state_machine.travel('Jump')
 		else:
 			if jump != 1 and  is_on_floor() and not is_bubbled:

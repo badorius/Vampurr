@@ -6,7 +6,6 @@ const JUMP_VELOCITY = -300.0
 const POINTS : int = 100
 
 const randomitem = preload("res://Items/RandomItem/RandomItem.tscn")
-
 var state_machine
 
 var screen_size  # Tamaño de la pantalla
@@ -98,7 +97,8 @@ func die():
 	var main = get_tree().current_scene
 	var item = randomitem.instantiate()
 	var color = "white"
-	item.global_position = Vector2(global_position.x - offset_position, (global_position.y) - offset_position)
+	item.global_position = Vector2(global_position.x - 5, (global_position.y) - 5)
+
 	main.add_child(item)
 
 	#Needs animation die and points for playerz

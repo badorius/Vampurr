@@ -153,7 +153,7 @@ visible = false
 visible = false
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.5
 autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

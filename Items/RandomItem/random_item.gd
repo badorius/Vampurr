@@ -2,6 +2,7 @@ extends Node2D
 
 const fish = preload("res://Items/Fish/fish.tscn")
 const catfood = preload("res://Items/CataFood/CatFood.tscn")
+const apple = preload("res://Items/Apple/Apple.tscn")
 
 var items = []
 
@@ -10,11 +11,10 @@ var items = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	items = [fish, catfood, fish, catfood]
+	items = [fish, catfood, apple, apple]
 	
 	# Instanciar un item aleatorio
 	var random_item = instantiate_random_item()
-
 	# Añadir el item instanciado a la escena
 	add_child(random_item)
 
