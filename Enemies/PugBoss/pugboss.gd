@@ -105,7 +105,7 @@ func die():
 
 
 func is_on_edge():
-	if abs(global_position.x) > abs(screen_size.x/2 - 24):
+	if abs(global_position.x) > abs(screen_size.x/2 - 48):
 		return true
 	else:
 		return false
