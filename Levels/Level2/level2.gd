@@ -7,13 +7,16 @@ extends Node2D
 
 #MUSIC VAR
 @onready var BgMusic = $BGMusicLVL1
-
+@onready var hud : CanvasLayer = get_node("Hud/")
+#Sounds
+@onready var insertcoin = $InsertCoin
 
 
 func _ready():
 	BgMusic.play()
 	
 func _physics_process(delta: float) -> void:
+	insert_coin()
 	if $Cauldron1.is_shed: 
 		$Crucifix1_floor1.inverted()
 		$Crucifix2_floor1.inverted()
@@ -26,6 +29,12 @@ func _physics_process(delta: float) -> void:
 		$Crucifix1_floor3.inverted()
 		$Crucifix2_floor3.inverted()
 	
+	
+func insert_coin():
+	if Input.is_action_just_pressed("insertcoin"):
+		insertcoin.play()
+		GameManager.credits += 1
+		hud.update_hud()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if level_finished == true:
