@@ -3,7 +3,9 @@ extends CharacterBody2D
 
 const SPEED = 30.0
 const JUMP_VELOCITY = -300.0
-const POINTS : int = 100
+const POINTS : int = 10000
+var live : int = 50
+@onready var HitSound = $Hit
 
 const randomitem = preload("res://Items/RandomItem/RandomItem.tscn")
 
@@ -32,12 +34,12 @@ func _ready() -> void:
 	$CollisionShape2D.disabled = false
 	$Area2D/CollisionShape2D2.disabled = false
 	state_machine = $AnimationTree.get('parameters/playback')
-	state_machine.travel('Run')
+	#state_machine.travel('Run')
 	
 	RandomNumberGenerator.new()
 	random_jump()
 	velocity.y = JUMP_VELOCITY 
-	state_machine.travel('Jump')
+	#state_machine.travel('Jump')
 		
 func random_jump():
 	jump = random.randi_range(1, 50)
@@ -46,6 +48,10 @@ func random_jump():
 func _physics_process(delta: float) -> void:
 	
 	if not is_dead:
+		
+		if live <= 0:
+			Bubble()
+			
 		random_jump()
 
 		if is_on_edge():
@@ -54,15 +60,16 @@ func _physics_process(delta: float) -> void:
 		flip_direction()
 		if not is_on_floor() and not is_bubbled:
 			velocity += get_gravity() * delta
-			state_machine.travel('Jump')
+			#state_machine.travel('Jump')
 
 		# Wehn jump random is 1 pug jump.
 		if jump == 1 and is_on_floor() and not is_bubbled:
 			velocity.y = JUMP_VELOCITY
-			state_machine.travel('Jump')
+			#state_machine.travel('Jump')
 		else:
 			if jump != 1 and  is_on_floor() and not is_bubbled:
-				state_machine.travel('Run')
+				#state_machine.travel('Run')
+				pass
 
 
 	velocity.x = direction * SPEED
@@ -81,7 +88,7 @@ func flip_direction():
 
 func Bubble():
 	is_bubbled = true
-	state_machine.travel('Bubble')
+	#state_machine.travel('Bubble')
 	velocity.y = -1 * SPEED
 	timer.start()
 	
@@ -91,7 +98,7 @@ func die():
 	direction = 0
 	velocity.x = 0
 	velocity.y = -1 * SPEED
-	state_machine.travel('Die')
+	#state_machine.travel('Die')
 
 	#FIX Random size
 	var offset_position = randi() % 20
@@ -110,12 +117,18 @@ func is_on_edge():
 	else:
 		return false
 
+func hit():
+	live -= 1
+	#state_machine.travel('Hit')
+	#HitSound.play()
+
 	
 #SIGNALS START HERE #PENDING FIX 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if not is_dead:
 		if body.is_in_group("Weapon") and not is_bubbled:
-			Bubble()
+			hit()
+			HitSound.play()
 		if body.is_in_group("Player") and is_bubbled:
 			body.showpoints(POINTS)
 			die()

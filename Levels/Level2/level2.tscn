@@ -197,7 +197,7 @@ tile_set = SubResource("TileSet_8udtl")
 script = ExtResource("4_spwpi")
 
 [node name="Player" parent="." instance=ExtResource("3_viem6")]
-position = Vector2(-94, 82)
+position = Vector2(-80, -440)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
