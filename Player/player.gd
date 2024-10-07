@@ -145,7 +145,7 @@ func resetPlayer():
 
 
 func gameover():
-		get_tree().quit()
+	get_tree().change_scene_to_file("res://Levels/GameOver/gameover.tscn")
 		
 func showpoints(VALUE):
 	var offset_position = randi() % 20

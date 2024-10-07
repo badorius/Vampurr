@@ -26,8 +26,12 @@ func update_hud():
 	match lives:
 		0:
 			$BoxContainerLives/IconLive3.visible = false
+			$BoxContainerLives/IconLive2.visible = false
+			$BoxContainerLives/IconLive1.visible = false
+
 		1:
 			$BoxContainerLives/IconLive2.visible = false
+			$BoxContainerLives/IconLive1.visible = false
 		2:
 			$BoxContainerLives/IconLive1.visible = false
 			

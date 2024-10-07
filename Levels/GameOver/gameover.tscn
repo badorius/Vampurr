@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5uam5g3j6rql"]
+
+[ext_resource type="Script" path="res://Levels/GameOver/gameover.gd" id="1_mmjke"]
+[ext_resource type="FontFile" uid="uid://dkbcte68j7fre" path="res://Hud/Emulogic-zrEw.ttf" id="2_btyvc"]
+[ext_resource type="AudioStream" uid="uid://c3mtsjdxs5bc5" path="res://Levels/GameOver/Assets/game-overr.mp3" id="4_1ovu1"]
+[ext_resource type="PackedScene" uid="uid://du5do0d82lytg" path="res://Hud/hud.tscn" id="5_l56fx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7auxd"]
+font = ExtResource("2_btyvc")
+font_size = 8
+
+[node name="Boot" type="Node2D"]
+script = ExtResource("1_mmjke")
+
+[node name="GameOver" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameOver" type="Label" parent="GameOver"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 96.0
+offset_right = 280.0
+offset_bottom = 119.0
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_7auxd")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Hud" parent="." instance=ExtResource("5_l56fx")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1ovu1")
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
