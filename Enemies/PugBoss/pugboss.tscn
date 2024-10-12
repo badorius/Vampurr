@@ -64,7 +64,6 @@ collision_mask = 33
 script = ExtResource("1_mcs6f")
 
 [node name="Vampurv1Ingrid" type="Sprite2D" parent="."]
-self_modulate = Color(1, 0.411765, 1, 1)
 position = Vector2(2, 0)
 texture = ExtResource("2_rrugj")
 

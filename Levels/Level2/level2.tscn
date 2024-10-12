@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cm740huixoh7n"]
+[gd_scene load_steps=17 format=4 uid="uid://cm740huixoh7n"]
 
 [ext_resource type="Script" path="res://Levels/Level2/level2.gd" id="1_hbiuq"]
 [ext_resource type="Texture2D" uid="uid://hffgyf33sk5y" path="res://Levels/Level2/assets/Dungeon Tile Set.png" id="2_7tmrn"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b8teg1mga1yu5" path="res://WorldObjects/Cauldron/Cauldron.tscn" id="10_x6eoj"]
 [ext_resource type="PackedScene" uid="uid://dcjinf1aohow6" path="res://Enemies/PugBoss/pugboss.tscn" id="11_51w2b"]
 [ext_resource type="AudioStream" uid="uid://cqootu45n8hfg" path="res://Levels/Level1/assets/coin-sound.mp3" id="12_texej"]
+[ext_resource type="PackedScene" uid="uid://c43bb0f0kwrft" path="res://WorldObjects/Coffin/Coffin.tscn" id="13_j21xa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vu0pw"]
 texture = ExtResource("2_7tmrn")
@@ -197,7 +198,7 @@ tile_set = SubResource("TileSet_8udtl")
 script = ExtResource("4_spwpi")
 
 [node name="Player" parent="." instance=ExtResource("3_viem6")]
-position = Vector2(-80, -440)
+position = Vector2(-91, 87)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -254,3 +255,6 @@ position = Vector2(-74, -496)
 
 [node name="InsertCoin" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_texej")
+
+[node name="GlassWater" parent="." instance=ExtResource("13_j21xa")]
+position = Vector2(103, -488)

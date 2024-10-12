@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 30.0
 const POINTS : int = 1000
-var live : int = 50
+var live : int = 10
 
 
 # Var to count how many enemies has been spawned:
