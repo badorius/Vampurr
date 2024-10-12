@@ -204,6 +204,7 @@ position = Vector2(-91, 87)
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
 material = SubResource("ShaderMaterial_e1kdk")
 anchors_preset = 15
 anchor_right = 1.0
@@ -241,7 +242,6 @@ position = Vector2(-40, -328)
 position = Vector2(40, -328)
 
 [node name="Crucifix4_floor2" parent="." instance=ExtResource("9_h1cdt")]
-visible = false
 position = Vector2(56, -328)
 
 [node name="Crucifix1_floor3" parent="." instance=ExtResource("9_h1cdt")]
