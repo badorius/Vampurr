@@ -100,6 +100,7 @@ func die():
 	item.global_position = Vector2(global_position.x - 5, (global_position.y) - 5)
 
 	main.add_child(item)
+	queue_free()
 
 	#Needs animation die and points for playerz
 

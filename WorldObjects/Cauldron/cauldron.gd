@@ -48,9 +48,9 @@ func _physics_process(delta: float) -> void:
 	if live <= 0:
 		shed()
 
-	if is_shed:
-		velocity.y = -1 * SPEED
-		move_and_slide()
+	#if is_shed:
+	#	velocity.y = -1 * SPEED
+	#	move_and_slide()
 
 
 
@@ -98,6 +98,7 @@ func hit():
 	live -= 1
 	state_machine.travel('Hit')
 	#HitSound.play()
+	bubble()
 
 
 
@@ -108,8 +109,8 @@ func change_color():
 func die():
 	is_shed = false
 	is_dead = true
-	velocity.y = -1 * SPEED
-	state_machine.travel('Explode')
+	#velocity.y = -1 * SPEED
+	state_machine.travel('Die')
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Weapon"):

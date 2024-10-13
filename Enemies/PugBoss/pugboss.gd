@@ -4,10 +4,10 @@ extends CharacterBody2D
 const SPEED = 30.0
 const JUMP_VELOCITY = -300.0
 const POINTS : int = 10000
-var live : int = 50
+var live : int = 5
 @onready var HitSound = $Hit
 
-const randomitem = preload("res://Items/RandomItem/RandomItem.tscn")
+const Coffin = preload("res://Items/Coffin/Coffin.tscn")
 
 var state_machine
 
@@ -34,7 +34,7 @@ func _ready() -> void:
 	$CollisionShape2D.disabled = false
 	$Area2D/CollisionShape2D2.disabled = false
 	state_machine = $AnimationTree.get('parameters/playback')
-	#state_machine.travel('Run')
+	state_machine.travel('Run')
 	
 	RandomNumberGenerator.new()
 	random_jump()
@@ -68,7 +68,7 @@ func _physics_process(delta: float) -> void:
 			#state_machine.travel('Jump')
 		else:
 			if jump != 1 and  is_on_floor() and not is_bubbled:
-				#state_machine.travel('Run')
+				state_machine.travel('Run')
 				pass
 
 
@@ -81,9 +81,9 @@ func _physics_process(delta: float) -> void:
 func flip_direction():
 	#Flip sprite direction
 	if direction == 1:
-		get_node( "Vampurv1Ingrid" ).set_flip_h( true )
+		get_node( "PugBoss" ).set_flip_h( false )
 	if direction == -1:
-		get_node( "Vampurv1Ingrid" ).set_flip_h( false )
+		get_node( "PugBoss" ).set_flip_h( true )
 		
 
 func Bubble():
@@ -99,11 +99,11 @@ func die():
 	velocity.x = 0
 	velocity.y = -1 * SPEED
 	#state_machine.travel('Die')
-
+	
 	#FIX Random size
 	var offset_position = randi() % 20
 	var main = get_tree().current_scene
-	var item = randomitem.instantiate()
+	var item = Coffin.instantiate()
 	var color = "white"
 	item.global_position = Vector2(global_position.x - offset_position, (global_position.y) - offset_position)
 	main.add_child(item)
@@ -119,8 +119,8 @@ func is_on_edge():
 
 func hit():
 	live -= 1
-	#state_machine.travel('Hit')
-	#HitSound.play()
+	state_machine.travel('Hit')
+	HitSound.play()
 
 	
 #SIGNALS START HERE #PENDING FIX 

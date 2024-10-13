@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxckqqg0g4mib"
-path="res://.godot/imported/Coffin.png-b1d0311f196faf7e3b3c59539d455e49.ctex"
+uid="uid://cqgh0cahtvpry"
+path="res://.godot/imported/pugboss3-Sheet.png-d5e46195154f68cb4e1f0cb0c808cad5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://WorldObjects/Coffin/Assets/Coffin.png"
-dest_files=["res://.godot/imported/Coffin.png-b1d0311f196faf7e3b3c59539d455e49.ctex"]
+source_file="res://Enemies/PugBoss/Assets/pugboss3-Sheet.png"
+dest_files=["res://.godot/imported/pugboss3-Sheet.png-d5e46195154f68cb4e1f0cb0c808cad5.ctex"]
 
 [params]
 
