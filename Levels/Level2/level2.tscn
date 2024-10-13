@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cm740huixoh7n"]
+[gd_scene load_steps=18 format=4 uid="uid://cm740huixoh7n"]
 
 [ext_resource type="Script" path="res://Levels/Level2/level2.gd" id="1_hbiuq"]
 [ext_resource type="Texture2D" uid="uid://hffgyf33sk5y" path="res://Levels/Level2/assets/Dungeon Tile Set.png" id="2_7tmrn"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dcjinf1aohow6" path="res://Enemies/PugBoss/pugboss.tscn" id="11_51w2b"]
 [ext_resource type="AudioStream" uid="uid://cqootu45n8hfg" path="res://Levels/Level1/assets/coin-sound.mp3" id="12_texej"]
 [ext_resource type="PackedScene" uid="uid://c43bb0f0kwrft" path="res://WorldObjects/Coffin/Coffin.tscn" id="13_j21xa"]
+[ext_resource type="PackedScene" uid="uid://drtp47xof0bq3" path="res://Enemies/CatGhost/CatGhost.tscn" id="14_lxh1b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vu0pw"]
 texture = ExtResource("2_7tmrn")
@@ -258,3 +259,6 @@ stream = ExtResource("12_texej")
 
 [node name="GlassWater" parent="." instance=ExtResource("13_j21xa")]
 position = Vector2(103, -488)
+
+[node name="CatGhost" parent="." instance=ExtResource("14_lxh1b")]
+position = Vector2(-88, -55)
