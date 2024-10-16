@@ -11,6 +11,9 @@ extends Node2D
 #Sounds
 @onready var insertcoin = $InsertCoin
 
+const Coffin = preload("res://Items/Coffin/Coffin.tscn")
+
+
 
 func _ready():
 	BgMusic.play()
@@ -28,6 +31,13 @@ func _physics_process(delta: float) -> void:
 	if $Cauldron3.is_shed: 
 		$Crucifix1_floor3.inverted()
 		$Crucifix2_floor3.inverted()
+		
+	if $Cauldron4.is_shed and $Cauldron5.is_shed:
+		var main = get_tree().current_scene
+		var item = Coffin.instantiate()
+		var color = "white"
+		item.global_position = Vector2(0, -512)
+		main.add_child(item)
 	
 	
 func insert_coin():
