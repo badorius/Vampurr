@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c43bb0f0kwrft"]
+[gd_scene load_steps=5 format=3 uid="uid://c43bb0f0kwrft"]
 
+[ext_resource type="Script" path="res://Items/Coffin/coffin.gd" id="1_3g6ev"]
 [ext_resource type="Texture2D" uid="uid://bxckqqg0g4mib" path="res://Items/Coffin/Assets/Coffin.png" id="1_s64em"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_guwhb"]
@@ -9,6 +10,7 @@ size = Vector2(13, 13)
 size = Vector2(16, 16)
 
 [node name="Coffin" type="CharacterBody2D"]
+script = ExtResource("1_3g6ev")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)

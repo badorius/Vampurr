@@ -98,8 +98,9 @@ func die():
 	var item = randomitem.instantiate()
 	var color = "white"
 	item.global_position = Vector2(global_position.x - 5, (global_position.y) - 5)
+	get_tree().current_scene.call_deferred("add_child", item)
 
-	main.add_child(item)
+	#main.add_child(item)
 	queue_free()
 
 	#Needs animation die and points for playerz

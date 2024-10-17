@@ -98,11 +98,10 @@ func die():
 	var item = randomitem.instantiate()
 	var color = "white"
 	item.global_position = Vector2(global_position.x - 5, (global_position.y) - 5)
-
-	main.add_child(item)
+	get_tree().current_scene.call_deferred("add_child", item)
 
 	#Needs animation die and points for playerz
-
+	queue_free()
 
 func is_on_edge():
 	if abs(global_position.x) > abs(screen_size.x/2 - 24):

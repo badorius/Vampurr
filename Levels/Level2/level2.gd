@@ -18,7 +18,7 @@ const Coffin = preload("res://Items/Coffin/Coffin.tscn")
 func _ready():
 	BgMusic.play()
 	
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	insert_coin()
 	if $Cauldron1.is_shed: 
 		$Crucifix1_floor1.inverted()
@@ -32,12 +32,13 @@ func _physics_process(delta: float) -> void:
 		$Crucifix1_floor3.inverted()
 		$Crucifix2_floor3.inverted()
 		
-	if $Cauldron4.is_shed and $Cauldron5.is_shed:
+	if $Cauldron4.is_shed and $Cauldron5.is_shed and not level_finished:
+		level_finished = true
 		var main = get_tree().current_scene
 		var item = Coffin.instantiate()
 		var color = "white"
 		item.global_position = Vector2(0, -512)
-		main.add_child(item)
+		get_tree().current_scene.call_deferred("add_child", item)
 	
 	
 func insert_coin():
@@ -45,9 +46,6 @@ func insert_coin():
 		insertcoin.play()
 		GameManager.credits += 1
 		hud.update_hud()
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	if level_finished == true:
-		get_tree().quit()
+
 
 		

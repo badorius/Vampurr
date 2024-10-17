@@ -91,7 +91,8 @@ func bubble():
 	var green_bubble = green_bubble.instantiate()
 	green_bubble.global_position = global_position
 	green_bubble.global_position.y -= 10
-	add_child(green_bubble)
+	get_tree().current_scene.call_deferred("add_child", green_bubble)
+	#add_child(green_bubble)
 	#Pass rect value to pug in order to get movement inteligence depending of sice window
 	
 func hit():

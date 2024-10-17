@@ -116,7 +116,9 @@ func shoting(ShotBlood_direction):
 	if ShotBlood_direction == -1:
 		A.position.x = global_position.x - 14
 	A.direction = ShotBlood_direction
-	main.add_child(A)
+	get_tree().current_scene.call_deferred("add_child", A)
+
+	#main.add_child(A)
 	
 func die():
 	lives -=1

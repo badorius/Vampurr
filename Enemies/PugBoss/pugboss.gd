@@ -106,7 +106,9 @@ func die():
 	var item = Coffin.instantiate()
 	var color = "white"
 	item.global_position = Vector2(global_position.x - offset_position, (global_position.y) - offset_position)
-	main.add_child(item)
+	get_tree().current_scene.call_deferred("add_child", item)
+	#main.add_child(item)
+	queue_free()
 
 	#Needs animation die and points for playerz
 

@@ -123,7 +123,8 @@ func shoting(ShotBlood_direction):
 	if ShotBlood_direction == -1:
 		A.position.x = global_position.x - 14
 	A.direction = ShotBlood_direction
-	main.add_child(A)
+	get_tree().current_scene.call_deferred("add_child", A)
+	#main.add_child(A)
 
 #Func dead player set vars and animation
 func die():
@@ -154,7 +155,8 @@ func showpoints(VALUE):
 	var color = "white"
 	points.global_position = Vector2(global_position.x - offset_position, (global_position.y) - offset_position)
 	points.show_points(VALUE, color)
-	main.add_child(points)
+	get_tree().current_scene.call_deferred("add_child", points)
+	#main.add_child(points)
 	
 	GameManager.score += VALUE
 	hud.update_hud() 
