@@ -1,0 +1,112 @@
+[gd_scene load_steps=15 format=3 uid="uid://bxpgx5xu5bky7"]
+
+[ext_resource type="Script" path="res://WorldObjects/Door/door.gd" id="1_cliuv"]
+[ext_resource type="Texture2D" uid="uid://emcfgromjg68" path="res://WorldObjects/Door/Assets/Door-Sheet.png" id="1_lwpxo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_guwhb"]
+size = Vector2(13, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lo3wf"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_i6k2d"]
+resource_name = "Open"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 11]
+}
+
+[sub_resource type="Animation" id="Animation_uhwh8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wsucy"]
+resource_name = "Close"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [11, 10, 9, 8, 7, 6, 5, 4, 2, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ebv5"]
+_data = {
+"Close": SubResource("Animation_wsucy"),
+"Open": SubResource("Animation_i6k2d"),
+"RESET": SubResource("Animation_uhwh8")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ekbnv"]
+animation = &"Close"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b8ebt"]
+animation = &"Open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1mbnk"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6qpce"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8jvxh"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jflen"]
+states/Close/node = SubResource("AnimationNodeAnimation_ekbnv")
+states/Close/position = Vector2(636, 100)
+states/Open/node = SubResource("AnimationNodeAnimation_b8ebt")
+states/Open/position = Vector2(401, 100)
+transitions = ["Start", "Open", SubResource("AnimationNodeStateMachineTransition_1mbnk"), "Open", "Close", SubResource("AnimationNodeStateMachineTransition_6qpce"), "Close", "End", SubResource("AnimationNodeStateMachineTransition_8jvxh")]
+
+[node name="Door" type="CharacterBody2D"]
+collision_layer = 32
+script = ExtResource("1_cliuv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_guwhb")
+
+[node name="Door" type="Sprite2D" parent="."]
+texture = ExtResource("1_lwpxo")
+hframes = 12
+
+[node name="Area2D" type="Area2D" parent="." groups=["Door"]]
+collision_layer = 32
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_lo3wf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8ebv5")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_jflen")
+anim_player = NodePath("../AnimationPlayer")

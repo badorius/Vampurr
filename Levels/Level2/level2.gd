@@ -12,8 +12,8 @@ extends Node2D
 @onready var insertcoin = $InsertCoin
 
 const Coffin = preload("res://Items/Coffin/Coffin.tscn")
-
-
+@onready var DoorOut : CharacterBody2D = get_node("DoorOut/")
+@onready var DoorIn : CharacterBody2D = get_node("DoorIn/")
 
 func _ready():
 	BgMusic.play()
@@ -34,11 +34,8 @@ func _process(delta: float) -> void:
 		
 	if $Cauldron4.is_shed and $Cauldron5.is_shed and not level_finished:
 		level_finished = true
-		var main = get_tree().current_scene
-		var item = Coffin.instantiate()
-		var color = "white"
-		item.global_position = Vector2(0, -512)
-		get_tree().current_scene.call_deferred("add_child", item)
+		DoorOut.open()
+
 	
 	
 func insert_coin():
