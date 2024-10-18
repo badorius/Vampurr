@@ -17,6 +17,7 @@ var state_machine
 @export var StartPosition = global_position
 @export var immune : bool = false
 @export var is_dead : bool = false
+@export var level_finished : bool = false
 
 #Shot blood scene loaded to instanciate on shot
 const ShotBlood = preload("../ShotBlood/shot_blood.tscn")
@@ -168,7 +169,6 @@ func showpoints(VALUE):
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemies") and not body.is_bubbled and not body.is_dead and not immune and not is_dead:
 		die()
-		
 
 
 func _on_timer_timeout() -> void:
