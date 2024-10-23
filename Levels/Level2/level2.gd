@@ -14,6 +14,8 @@ extends Node2D
 const Coffin = preload("res://Items/Coffin/Coffin.tscn")
 @onready var DoorOut : CharacterBody2D = get_node("DoorOut/")
 @onready var DoorIn : CharacterBody2D = get_node("DoorIn/")
+@onready var Player : CharacterBody2D = get_node("Player/")
+
 
 func _ready():
 	BgMusic.play()
@@ -36,12 +38,20 @@ func _process(delta: float) -> void:
 		
 	if $Cauldron4.is_shed and $Cauldron5.is_shed and DoorOut.IsClosed:
 		DoorOut.open()
+		
+	if DoorOut.IsOpened:
+		if Player.global_position > DoorOut.global_position:
+			endlevel()
+			
 
 	
 func endlevel():
 	var FILE_BEGIN = "res://Levels/Level"
 	var current_scene_file = get_tree().current_scene.scene_file_path
-	var next_level_number = current_scene_file.to_int() + 1
+	print(current_scene_file)
+	###FIX TO PENDING - 10 
+	var next_level_number = current_scene_file.to_int() + 1 - 20
+	print(current_scene_file.to_int())
 	var next_level_path = FILE_BEGIN + str(next_level_number) + "/level"+ str(next_level_number) + ".tscn"
 	get_tree().change_scene_to_file(next_level_path)
 	#get_tree().quit()
