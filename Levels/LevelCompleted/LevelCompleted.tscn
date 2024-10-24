@@ -1,16 +1,16 @@
 [gd_scene load_steps=6 format=3 uid="uid://b2gx5rbo8vx8"]
 
-[ext_resource type="Script" path="res://Levels/GameOver/gameover.gd" id="1_5meoq"]
+[ext_resource type="Script" path="res://Levels/LevelCompleted/LevelCompleted.gd" id="1_1rl6i"]
 [ext_resource type="FontFile" uid="uid://dkbcte68j7fre" path="res://Hud/Emulogic-zrEw.ttf" id="2_168b7"]
 [ext_resource type="PackedScene" uid="uid://du5do0d82lytg" path="res://Hud/hud.tscn" id="3_yirho"]
-[ext_resource type="AudioStream" uid="uid://c3mtsjdxs5bc5" path="res://Levels/GameOver/Assets/game-overr.mp3" id="4_ddm7b"]
+[ext_resource type="AudioStream" uid="uid://dbp3s8pdyvdvh" path="res://Levels/LevelCompleted/Assets/levelup.mp3" id="4_r5omy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7auxd"]
 font = ExtResource("2_168b7")
 font_size = 8
 
-[node name="Boot" type="Node2D"]
-script = ExtResource("1_5meoq")
+[node name="LevelCompleted" type="Node2D"]
+script = ExtResource("1_1rl6i")
 
 [node name="LevelCompleted" type="Control" parent="."]
 layout_mode = 3
@@ -34,7 +34,7 @@ autostart = true
 [node name="Hud" parent="." instance=ExtResource("3_yirho")]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_ddm7b")
+stream = ExtResource("4_r5omy")
 autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

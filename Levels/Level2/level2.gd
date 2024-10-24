@@ -12,6 +12,8 @@ extends Node2D
 @onready var insertcoin = $InsertCoin
 
 const Coffin = preload("res://Items/Coffin/Coffin.tscn")
+const LevelCompleted = preload("res://Levels/LevelCompleted/LevelCompleted.tscn")
+
 @onready var DoorOut : CharacterBody2D = get_node("DoorOut/")
 @onready var DoorIn : CharacterBody2D = get_node("DoorIn/")
 @onready var Player : CharacterBody2D = get_node("Player/")
@@ -41,11 +43,16 @@ func _process(delta: float) -> void:
 		
 	if DoorOut.IsOpened:
 		if Player.global_position > DoorOut.global_position:
-			endlevel()
+			levelcompleted()
 			
+func levelcompleted():
+	
+	var LvLCompleteInstance = LevelCompleted.instantiate()
+	add_child(LvLCompleteInstance)
 
 	
 func endlevel():
+
 	var FILE_BEGIN = "res://Levels/Level"
 	var current_scene_file = get_tree().current_scene.scene_file_path
 	print(current_scene_file)
@@ -62,6 +69,3 @@ func insert_coin():
 		insertcoin.play()
 		GameManager.credits += 1
 		hud.update_hud()
-
-
-		

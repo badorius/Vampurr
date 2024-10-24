@@ -162,7 +162,18 @@ func showpoints(VALUE):
 	GameManager.score += VALUE
 	hud.update_hud() 
 	
-
+func game_pause ():
+		$Popup.visible = true
+		get_tree().paused = true
+		#Engine.time_scale = 0
+		#get_tree().change_scene_to_file("res://Objects/menu.tscn")
+	
+	#QUIT GAME FUNCTION
+func game_unpause ():
+		$Popup.visible = false
+		get_tree().paused = false
+		#Engine.time_scale = 0
+		#get_tree().change_scene_to_file("res://Objects/menu.tscn")
 
 
 #SIGNALS START HERE
