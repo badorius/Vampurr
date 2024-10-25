@@ -23,7 +23,8 @@ func _ready():
 	BgMusic.play()
 	DoorIn.open()
 	#DoorIn.close()
-	
+	GameManager.level += 2
+
 func _process(delta: float) -> void:
 	insert_coin()
 	if $Cauldron1.is_shed: 
@@ -46,19 +47,15 @@ func _process(delta: float) -> void:
 			levelcompleted()
 			
 func levelcompleted():
-	
-	var LvLCompleteInstance = LevelCompleted.instantiate()
-	add_child(LvLCompleteInstance)
+	get_tree().change_scene_to_file("res://Levels/LevelCompleted/LevelCompleted.tscn")
+
 
 	
 func endlevel():
-
+	GameManager.level += 1
 	var FILE_BEGIN = "res://Levels/Level"
 	var current_scene_file = get_tree().current_scene.scene_file_path
-	print(current_scene_file)
-	###FIX TO PENDING - 10 
-	var next_level_number = current_scene_file.to_int() + 1 - 20
-	print(current_scene_file.to_int())
+	var next_level_number = current_scene_file.to_int() + GameManager.level
 	var next_level_path = FILE_BEGIN + str(next_level_number) + "/level"+ str(next_level_number) + ".tscn"
 	get_tree().change_scene_to_file(next_level_path)
 	#get_tree().quit()
