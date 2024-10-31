@@ -21,7 +21,7 @@ func _ready():
 	BgMusic.play()
 	DoorIn.open()
 	#DoorIn.close()
-	GameManager.level += 2
+	GameManager.level = 3
 
 	
 func _process(delta: float) -> void:
