@@ -13,6 +13,7 @@ const PointsIndicator = preload("res://Hud/points_indicator.tscn")
 
 #Var state_machine animation
 var state_machine
+var screen_size  # Tamaño de la pantalla
 
 @export var StartPosition = global_position
 @export var immune : bool = false
@@ -32,11 +33,21 @@ var ShotBloodDirection = 1
 
 
 func _ready() -> void:
+		screen_size = get_viewport().get_visible_rect().size  # Tamaño visible de la pantalla
 		state_machine = $AnimationTree.get('parameters/playback')
 		state_machine.travel('Iddle')
 
 
 func _physics_process(delta):
+	# Si el jugador ha alcanzado el límite superior de la pantalla, bajar posicion player
+	if global_position.y >= screen_size.y / 2:
+		global_position.y = (screen_size.y / 2) * - 1
+
+	# Si el jugador ha alcanzado el límite inferior de la pantalla, subir posicion player
+	if global_position.y <  (screen_size.y / 2) * - 1:
+		global_position.y = (screen_size.y / 2)
+
+	
 	# Exit
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()

@@ -27,20 +27,9 @@ func _ready():
 
 func _process(delta: float) -> void:
 	insert_coin()
-	if $Cauldron1.is_shed: 
-		$Crucifix1_floor1.inverted()
-		$Crucifix2_floor1.inverted()
-	if $Cauldron2.is_shed: 
-		$Crucifix1_floor2.inverted()
-		$Crucifix2_floor2.inverted()
-		$Crucifix3_floor2.inverted()
-		$Crucifix4_floor2.inverted()
-	if $Cauldron3.is_shed: 
-		$Crucifix1_floor3.inverted()
-		$Crucifix2_floor3.inverted()
+
 		
-	if $Cauldron4.is_shed and $Cauldron5.is_shed and DoorOut.IsClosed:
-		DoorOut.open()
+	#DoorOut.open()
 		
 	if DoorOut.IsOpened:
 		if Player.global_position > DoorOut.global_position:

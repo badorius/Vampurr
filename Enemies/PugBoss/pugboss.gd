@@ -47,6 +47,14 @@ func random_jump():
 
 func _physics_process(delta: float) -> void:
 	
+	# Si el jugador ha alcanzado el límite superior de la pantalla, bajar posicion player
+	if global_position.y >= screen_size.y / 2:
+		global_position.y = (screen_size.y / 2) * - 1
+
+	# Si el jugador ha alcanzado el límite inferior de la pantalla, subir posicion player
+	if global_position.y <  (screen_size.y / 2) * - 1:
+		global_position.y = (screen_size.y / 2)
+	
 	if not is_dead:
 		
 		if live <= 0:

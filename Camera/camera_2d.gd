@@ -10,6 +10,8 @@ func _ready() -> void:
 
 # Llamado cada frame
 func _process(delta: float) -> void:
+	pass
+	"""
 	# Si el jugador ha alcanzado el límite superior de la pantalla, subir la cámara
 	if player.global_position.y <= flor_level - screen_size.y / 2:
 		flor_level -= screen_size.y  # Subir un bloque completo de pantalla
@@ -19,3 +21,4 @@ func _process(delta: float) -> void:
 	elif player.global_position.y > flor_level + screen_size.y / 2:
 		flor_level += screen_size.y  # Bajar un bloque completo de pantalla
 		global_position.y = flor_level
+	"""
