@@ -676,3 +676,12 @@ position = Vector2(-120, 88)
 
 [node name="DoorOut" parent="." instance=ExtResource("13_swc4n")]
 position = Vector2(120, 88)
+
+[node name="CatGhost2" parent="." instance=ExtResource("12_vqrq8")]
+position = Vector2(88, -54)
+
+[node name="CatGhost3" parent="." instance=ExtResource("12_vqrq8")]
+position = Vector2(-56, 42)
+
+[node name="CatGhost4" parent="." instance=ExtResource("12_vqrq8")]
+position = Vector2(56, 40)

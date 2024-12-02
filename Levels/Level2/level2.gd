@@ -24,12 +24,14 @@ func _ready():
 	DoorIn.open()
 	#DoorIn.close()
 	GameManager.level = 2
+	GameManager.enemies_num = 4
+
 
 func _process(delta: float) -> void:
 	insert_coin()
 
-		
-	#DoorOut.open()
+	if GameManager.enemies_num == 0:
+		DoorOut.open()
 		
 	if DoorOut.IsOpened:
 		if Player.global_position > DoorOut.global_position:

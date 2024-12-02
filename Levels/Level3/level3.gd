@@ -18,6 +18,8 @@ const Coffin = preload("res://Items/Coffin/Coffin.tscn")
 
 
 func _ready():
+	GameManager.enemies_num = 4
+
 	BgMusic.play()
 	DoorIn.open()
 	#DoorIn.close()
@@ -25,13 +27,17 @@ func _ready():
 
 	
 func _process(delta: float) -> void:
-	if false:
+	insert_coin()
+
+	if GameManager.enemies_num == 0:
 		DoorOut.open()
 		
 	if DoorOut.IsOpened:
-		#print(Player.global_position, DoorOut.global_position)
 		if Player.global_position > DoorOut.global_position:
-			endlevel()
+			levelcompleted()
+			
+func levelcompleted():
+	get_tree().change_scene_to_file("res://Levels/LevelCompleted/LevelCompleted.tscn")
 			
 
 	

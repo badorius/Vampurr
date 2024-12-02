@@ -95,6 +95,7 @@ func Bubble():
 func die():
 	is_bubbled = false
 	is_dead = true
+	GameManager.enemies_num -= 1
 	direction = 0
 	velocity.x = 0
 	velocity.y = -1 * SPEED
