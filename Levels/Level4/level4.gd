@@ -23,7 +23,7 @@ func _ready():
 	BgMusic.play()
 	DoorIn.open()
 	#DoorIn.close()
-	GameManager.level = 3
+	GameManager.level = 4
 
 	
 func _process(delta: float) -> void:
@@ -37,7 +37,6 @@ func _process(delta: float) -> void:
 			levelcompleted()
 			
 func levelcompleted():
-	hud.stop_timer()
 	get_tree().change_scene_to_file("res://Levels/LevelCompleted/LevelCompleted.tscn")
 			
 

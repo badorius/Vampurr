@@ -4,7 +4,9 @@ extends CanvasLayer
 @export var score : int = 0
 @export var high_score : int = 10000
 @export var timer : float = 300.0
+@export var timer_status : bool = true
 @export var credits : int = 0
+
 
 
 
@@ -14,8 +16,18 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if timer_status:
+		update_timer()
+		
 
+func stop_timer():
+	timer_status = false
+	$Time.text = str(int(0))
+	
+func update_timer():
+	var tmp_time = float($Time.text) 
+	timer -= 0.02
+	$Time.text = str(int(timer))
 
 func update_hud():
 	lives = GameManager.lives
@@ -31,9 +43,9 @@ func update_hud():
 
 		1:
 			$BoxContainerLives/IconLive2.visible = false
-			$BoxContainerLives/IconLive1.visible = false
+			$BoxContainerLives/IconLive3.visible = false
 		2:
-			$BoxContainerLives/IconLive1.visible = false
+			$BoxContainerLives/IconLive3.visible = false
 			
 	$Credits.text = str(credits)
 	$Socre.text = str(score)
